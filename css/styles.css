@@ -25,16 +25,11 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     background-color: var(--white);
-    position: fixed;
-    width: 100%;
+    position: sticky;
     top: 0;
+    width: 100%;
     z-index: 1000;
-    transition: transform 0.3s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.header.hidden {
-    transform: translateY(-100%);
 }
 
 .nav-main ul {
