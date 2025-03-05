@@ -663,11 +663,6 @@ body {
     }
 }
 
-/* Ajustamos el main para que no quede debajo del header */
-main {
-    margin-top: 80px; /* Ajusta este valor según la altura de tu header */
-}
-
 /* Responsive adjustments for sports grid */
 @media (max-width: 768px) {
     .sports-grid {
