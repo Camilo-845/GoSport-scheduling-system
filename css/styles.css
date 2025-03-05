@@ -15,6 +15,7 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    background-color: #f0f0f0;
 }
 
 /* Header */
@@ -24,6 +25,16 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     background-color: var(--white);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header.hidden {
+    transform: translateY(-100%);
 }
 
 .nav-main ul {
@@ -35,6 +46,32 @@ body {
 .nav-main a {
     text-decoration: none;
     color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-main a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-main a:hover {
+    color: var(--primary-color);
+}
+
+.nav-main a:hover::after {
+    width: 80%;
 }
 
 .auth-buttons {
@@ -43,78 +80,165 @@ body {
 }
 
 .btn-login, .btn-register {
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 2rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
+    transition: transform 0.3s ease;
+    font-size: 1rem;
+    font-weight: 600;
+    min-width: 140px;
+}
+
+.btn-login {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
 }
 
 .btn-register {
     background-color: var(--primary-color);
     color: var(--white);
+    box-shadow: 0 4px 6px rgba(76, 175, 80, 0.2);
+}
+
+.btn-register:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(76, 175, 80, 0.3);
+}
+
+.btn-login:hover {
+    transform: scale(1.05);
+    background-color: rgba(76, 175, 80, 0.1);
 }
 
 /* Sports Grid */
 .sports-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 1rem;
-    padding: 1rem;
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .sport-card {
-    border-radius: 12px;
+    border-radius: 20px;
     overflow: hidden;
     position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.sport-card:hover {
+    transform: translateY(-5px);
 }
 
 .futbol-motocross {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .sport {
     position: relative;
-    height: 200px;
+    height: 250px;
     color: var(--white);
     display: flex;
     align-items: flex-end;
-    padding: 1rem;
+    padding: 2rem;
     background-size: cover;
     background-position: center;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.sport::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        rgba(0, 0, 0, 0.1) 100%
+    );
+    z-index: 1;
+}
+
+.sport h2 {
+    position: relative;
+    z-index: 2;
+    font-size: 2rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.sport:hover h2 {
+    transform: translateY(0);
+}
+
+.sport p {
+    position: relative;
+    z-index: 2;
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.sport:hover p {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .paintball {
     height: 100%;
-    color: var(--white);
-    display: flex;
-    align-items: flex-end;
-    padding: 1rem;
-    background-size: cover;
-    background-position: center;
 }
 
 /* Sports Grid Backgrounds */
 .futbol {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('../img/futbol.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+                url('https://i.pinimg.com/736x/38/66/12/386612136da36e6017f7f1a0520cdf5e.jpg');
     background-size: cover;
     background-position: center;
 }
 
 .motocross {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('../img/motocross.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+                url('https://i.pinimg.com/736x/fd/52/8c/fd528ca3e1ad054c02ac37be9a5c75c3.jpg');
     background-size: cover;
     background-position: center;
 }
 
 .paintball {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('../img/paintball.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+                url('https://i.pinimg.com/736x/fc/12/da/fc12dafd474902c0d4f475042ccb0f6b.jpg');
     background-size: cover;
     background-position: center;
+}
+
+/* Hover effects for sport cards */
+.sport::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.sport:hover::after {
+    transform: scaleX(1);
 }
 
 /* More Sports Section */
@@ -131,12 +255,181 @@ body {
     border-radius: 12px;
 }
 
-/* Info Section */
+/* Info Section Redesign */
 .info-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.info-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.info-content h2 {
+    color: var(--text-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.info-content p {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.feature i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    background: rgba(76, 175, 80, 0.1);
+    padding: 1rem;
+    border-radius: 50%;
+}
+
+.feature span {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Tournaments Section */
+.tournament-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.btn-view-all {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-view-all:hover {
+    transform: translateX(5px);
+}
+
+.tournament-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tournament-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.tournament-item:hover {
+    transform: translateX(5px);
+}
+
+.tournament-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+    padding: 0.5rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+}
+
+.tournament-date .day {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.tournament-date .month {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.tournament-info {
+    flex: 1;
+}
+
+.tournament-info h3 {
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+}
+
+.tournament-info p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.btn-join {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-join:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 968px) {
+    .info-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .features {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .features {
+        grid-template-columns: 1fr;
+    }
+    
+    .tournament-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .tournament-date {
+        min-width: 100px;
+    }
 }
 
 /* CTA Section */
@@ -145,51 +438,106 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .cta-card {
-    padding: 2rem;
-    border-radius: 12px;
+    background: var(--white);
+    padding: 3rem 2rem;
+    border-radius: 20px;
     text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
-.cta-card:first-child {
-    background-color: #90EE90;
+.cta-card:hover {
+    transform: translateY(-5px);
 }
 
-.cta-card:last-child {
-    background-color: #FF6B6B;
+.cta-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
-/* Responsive Design */
+.cta-card.consulta i {
+    color: var(--primary-color);
+}
+
+.cta-card.opinion i {
+    color: #FFD700;
+}
+
+.cta-card h2 {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.cta-card p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.cta-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cta-button i {
+    font-size: 1rem;
+    margin: 0;
+    color: white;
+}
+
+.cta-card.consulta .cta-button {
+    background: var(--primary-color);
+}
+
+.cta-card.opinion .cta-button {
+    background: #FF6B6B;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Ajustar responsive existente */
 @media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .sports-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .info-section {
-        grid-template-columns: 1fr;
-    }
-
     .cta-section {
         grid-template-columns: 1fr;
+        padding: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    .nav-main ul {
-        flex-direction: column;
-        text-align: center;
+    .cta-card {
+        padding: 2rem 1rem;
     }
-
-    .auth-buttons {
-        flex-direction: column;
+    
+    .cta-card h2 {
+        font-size: 1.5rem;
+    }
+    
+    .cta-button {
         width: 100%;
+        justify-content: center;
     }
 }
 
@@ -317,5 +665,32 @@ body {
     .footer-links {
         flex-direction: column;
         gap: 0.5rem;
+    }
+}
+
+/* Ajustamos el main para que no quede debajo del header */
+main {
+    margin-top: 80px; /* Ajusta este valor según la altura de tu header */
+}
+
+/* Responsive adjustments for sports grid */
+@media (max-width: 768px) {
+    .sports-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .sport {
+        height: 200px;
+    }
+
+    .sport h2 {
+        font-size: 1.8rem;
+        transform: translateY(0);
+    }
+
+    .sport p {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

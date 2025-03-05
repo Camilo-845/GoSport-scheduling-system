@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Go Sport</title>
+    <link rel="icon" type="image/svg+xml" href="resources/icon.svg">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="js/header.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -29,14 +31,25 @@
         <section class="sports-grid">
             <div class="sport-card futbol-motocross">
                 <div class="sport futbol">
-                    <h2>Fútbol</h2>
+                    <div class="sport-content">
+                        <h2>Fútbol</h2>
+                        <p>Organiza partidos y torneos en las mejores canchas de la ciudad</p>
+                    </div>
                 </div>
                 <div class="sport motocross">
-                    <h2>Moto Cross</h2>
+                    <div class="sport-content">
+                        <h2>Moto Cross</h2>
+                        <p>Vive la adrenalina en nuestras pistas profesionales</p>
+                    </div>
                 </div>
             </div>
-            <div class="sport-card paintball">
-                <h2>PaintBall</h2>
+            <div class="sport-card">
+                <div class="sport paintball">
+                    <div class="sport-content">
+                        <h2>PaintBall</h2>
+                        <p>Estrategia y diversión en campos especializados</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -44,7 +57,7 @@
             <div class="more-sports-content">
                 <h2>Más deportes →</h2>
                 <div class="experiences">
-                    <img src="path/to/experiences.png" alt="Experiencias deportivas">
+                    <img src="./resources/sport.svg" alt="Experiencias deportivas">
                     <div class="experiences-text">
                         <h3>Experiencias Asombrosas</h3>
                         <p>Descubre todas nuestras actividades que tenemos disponibles para ti</p>
@@ -54,23 +67,88 @@
         </section>
 
         <section class="info-section">
-            <div class="description">
-                <h2>Go Sport es tu agenda de citas web para practicar tu deporte favorito con tus amigos y familiares</h2>
+            <div class="info-card description">
+                <div class="info-content">
+                    <h2>¿Qué es Go Sport?</h2>
+                    <p>Tu plataforma deportiva para conectar con otros deportistas y reservar instalaciones. Organiza partidos, únete a eventos y disfruta del deporte en comunidad.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <span>Conecta con deportistas</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Reserva instalaciones</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-trophy"></i>
+                            <span>Participa en eventos</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="tournaments">
-                <h2>Torneos y Eventos</h2>
-                <img src="path/to/tournaments.png" alt="Torneos y eventos deportivos">
+            <div class="info-card tournaments">
+                <div class="tournament-header">
+                    <h2>Próximos Torneos y Eventos</h2>
+                    <button class="btn-view-all">Ver todos <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="tournament-list">
+                    <div class="tournament-item">
+                        <div class="tournament-date">
+                            <span class="day">15</span>
+                            <span class="month">MAR</span>
+                        </div>
+                        <div class="tournament-info">
+                            <h3>Torneo de Fútbol 5</h3>
+                            <p>Santa Marta Stadium • 2:00 PM</p>
+                        </div>
+                        <button class="btn-join">Inscribirse</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-date">
+                            <span class="day">22</span>
+                            <span class="month">MAR</span>
+                        </div>
+                        <div class="tournament-info">
+                            <h3>Campeonato Motocross</h3>
+                            <p>Pista MX Santa Marta • 10:00 AM</p>
+                        </div>
+                        <button class="btn-join">Inscribirse</button>
+                    </div>
+                    <div class="tournament-item">
+                        <div class="tournament-date">
+                            <span class="day">29</span>
+                            <span class="month">MAR</span>
+                        </div>
+                        <div class="tournament-info">
+                            <h3>Torneo Paintball Teams</h3>
+                            <p>Campo Paintball Pro • 3:30 PM</p>
+                        </div>
+                        <button class="btn-join">Inscribirse</button>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section class="cta-section">
-            <div class="cta-card">
+            <div class="cta-card consulta">
+                <i class="fas fa-calendar-check"></i>
                 <h2>Consulta tu cita</h2>
-                <p>Aquí</p>
+                <p>Revisa el estado de tus reservas y próximos eventos deportivos</p>
+                <button class="cta-button">
+                    Consultar ahora
+                    <i class="fas fa-arrow-right"></i>
+                </button>
             </div>
-            <div class="cta-card">
-                <h2>Dejanos tu opinión</h2>
+            <div class="cta-card opinion">
+                <i class="fas fa-star"></i>
+                <h2>Déjanos tu opinión</h2>
+                <p>Tu feedback nos ayuda a mejorar la experiencia deportiva</p>
+                <button class="cta-button">
+                    Escribir reseña
+                    <i class="fas fa-arrow-right"></i>
+                </button>
             </div>
         </section>
     </main>
@@ -112,7 +190,7 @@
                 <ul class="contact-info">
                     <li><i class="fas fa-phone"></i> +34 123 456 789</li>
                     <li><i class="fas fa-envelope"></i> info@gosport.com</li>
-                    <li><i class="fas fa-location-dot"></i> Calle Deporte 123, Madrid</li>
+                    <li><i class="fas fa-location-dot"></i> Calle Deporte 123, Santa Marta</li>
                 </ul>
             </div>
         </div>
