@@ -2,6 +2,8 @@ import cors from "cors";
 import express from "express";
 import morgan from "morgan";
 
+import apiRutaAuth from "../../app/auth/route/auth_route";
+
 import dotenv from "dotenv";
 
 dotenv.config({
@@ -19,6 +21,7 @@ class Server{
     }
 
     public exposeEndPoint(){
+        this.app.use("/auth", apiRutaAuth);
     }
 
     public chargeConfiguration(){
