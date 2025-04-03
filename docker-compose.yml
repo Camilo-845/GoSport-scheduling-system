@@ -6,3 +6,50 @@ services:
     - '8080:80'
     volumes:
     - ./:/usr/local/apache2/htdocs
+  postgres:
+    image: postgres:13-alpine
+    container_name: gosport_db
+    environment:
+      POSTGRES_USER: gosport_user
+      POSTGRES_PASSWORD: gosport_password
+      POSTGRES_DB: gosport_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gosport_user -d gosport_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app_network
+  api:
+    build: ./api/
+    container_name: api_gosport 
+    environment:
+      DB_NAME: gosport_db 
+      DB_USER: gosport_user 
+      DB_PORT: 5432
+      DB_HOST: postgres
+      DB_PASSWORD: gosport_password
+      PORT: 8080
+    ports:
+      - "8081:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./api:/usr/src/app
+      - /usr/src/app/build
+      - /usr/src/app/node_modules
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  postgres_data:

@@ -1,6 +1,6 @@
-# Go Sport - scheduling system
+# Go Sport - Aplicación web de Agentdamientos
 
-| scheduling system frontend on vanilla HTML, CSS, JavaScript
+| Aplicación web de agendamientos de espacios deportivos construida con angular, nodejs y postreSQL
 
 ## Inicializar
 
@@ -15,4 +15,5 @@ Iniciar contendores
 docker-compose up -d --build
 ```
 
-La aplicación web se prodrá acceder desde el [localhost:8080](http://localhost:8080/)
+- La aplicación web se prodrá acceder desde el [localhost:8080](http://localhost:8080/)
+- La API escuha a través del puerto 8081
