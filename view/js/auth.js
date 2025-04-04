@@ -77,6 +77,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         icon: 'success',
                         title: 'Inicio de sesión exitoso',
                         text: 'Has iniciado sesión correctamente.',
+                    }).then(() => {
+                        // Redirigir a la página de bienvenida
+                        window.location.href = 'welcome.html';
                     });
                 } else {
                     // Mostrar alerta de error
