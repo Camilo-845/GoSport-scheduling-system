@@ -1,5 +1,6 @@
+import { AppRoutes } from '@/app.routes';
 import { CustomInputComponent } from '@/components';
-import { AuthService } from '@/services';
+import { AuthService, localKeys, LocalManagerService } from '@/services';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   FormControl,
@@ -7,10 +8,12 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 
 interface registerForm {
-  fullName: FormControl<string>;
+  firstName: FormControl<string>;
+  lastName: FormControl<string>;
   email: FormControl<string>;
   number: FormControl<string>;
   password: FormControl<string>;
@@ -26,9 +29,15 @@ interface registerForm {
 })
 export class RegisterComponent {
   authService = inject(AuthService);
+  localManagerService = inject(LocalManagerService);
+  router = inject(Router);
 
   registerForm = new FormGroup<registerForm>({
-    fullName: new FormControl('', {
+    firstName: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
+    lastName: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required],
     }),
@@ -56,7 +65,24 @@ export class RegisterComponent {
       try {
         await firstValueFrom(
           this.authService.register(this.registerForm.getRawValue()),
-        );
+        )
+          .then(async () => {
+            await firstValueFrom(
+              this.authService.login(this.registerForm.getRawValue()),
+            )
+              .then((token) => {
+                this.localManagerService.setElement(localKeys.token, token);
+                this.router.navigate([AppRoutes.private.root], {
+                  replaceUrl: true,
+                });
+              })
+              .catch((error) => {
+                console.error(error);
+              });
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       } catch (error) {
         console.error(error);
       }

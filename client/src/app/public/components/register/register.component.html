@@ -1,11 +1,18 @@
 <div>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <app-custom-input
-      label="Full Name"
+      label="First Name"
       errorMessage="No se ingreso ningun valor"
-      [control]="registerForm.get('fullName')"
+      [control]="registerForm.get('firstName')"
       type="text"
-      placeHolder="Enter yout full name"
+      placeHolder="Enter your first name"
+    />
+    <app-custom-input
+      label="Last Name"
+      errorMessage="No se ingreso ningun valor"
+      [control]="registerForm.get('lastName')"
+      type="text"
+      placeHolder="Enter your last name"
     />
     <app-custom-input
       label="Email"

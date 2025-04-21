@@ -1,4 +1,4 @@
-import { AuthAdapter } from '@/adapters';
+import { AuthAdapter, RegisterRequestAdapter } from '@/adapters';
 import { AuthData, LoginResponse, RegisterData } from '@/models';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -18,7 +18,10 @@ export class AuthService {
       .pipe(map(AuthAdapter));
   }
 
-  register(user: RegisterData): Observable<void> {
-    return this.http.post<void>(`${this.baseUrl}/register`, user);
+  register(userData: RegisterData): Observable<void> {
+    return this.http.post<void>(
+      `${this.baseUrl}/register`,
+      RegisterRequestAdapter(userData),
+    );
   }
 }
