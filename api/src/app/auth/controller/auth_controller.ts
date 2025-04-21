@@ -2,37 +2,20 @@ import { Request, Response } from "express";
 import Auth_DAO from "../dao/auth_DAO";
 
 class Auth_Controller extends Auth_DAO {
-    public async registerUser(req: Request, res: Response) {
-        const {
-            nombre,
-            apellido,
-            correoElectronico,
-            telefono,
-            user_name,
-            contrasena
-        } = req.body;
+  public async registerUser(req: Request, res: Response) {
+    const { nombre, apellido, email, telefono, password } = req.body;
 
-        const data = [
-            nombre,
-            apellido,
-            correoElectronico,
-            telefono,
-            user_name,
-            contrasena
-        ];
+    const data = [nombre, apellido, email, telefono, password];
+    console.log("data", data);
+    Auth_Controller.registrarUsuario(data, res);
+  }
 
-        Auth_Controller.registrarUsuario(data, res);
-    }
+  public async loginUser(req: Request, res: Response) {
+    const { email, password } = req.body;
 
-    public async loginUser(req: Request, res: Response) {
-        const {
-            correoElectronico,
-            contrasena
-        } = req.body;
-
-        const data = [correoElectronico, contrasena];
-        Auth_Controller.iniciarSesion(data, res);
-    }
+    const data = [email, password];
+    Auth_Controller.iniciarSesion(data, res);
+  }
 }
 
 const authController = new Auth_Controller();
