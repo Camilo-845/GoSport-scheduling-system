@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './guards';
+import { authGuard, isLoggedGuard } from './guards';
 
 export const AppRoutes = {
   public: {
+    root: '',
     register: 'register',
     login: 'login',
     notFound: '404',
@@ -16,7 +17,11 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: `/${AppRoutes.private.root}/${AppRoutes.private.home}`,
+    canActivate: [isLoggedGuard],
+    loadComponent: () =>
+      import('./public/components/landing-page/landing-page.component').then(
+        (m) => m.LandingPageComponent,
+      ),
   },
   {
     path: AppRoutes.public.login,
