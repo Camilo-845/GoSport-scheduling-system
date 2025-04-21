@@ -3,7 +3,7 @@ CREATE TABLE Usuario (
   nombre varchar(255) NOT NULL,
   apellido varchar(255) NOT NULL,
   email varchar(255) UNIQUE NOT NULL,
-  telefono integer NOT NULL,
+  telefono BIGINT NOT NULL,
   password varchar(255) NOT NULL
 );
 
