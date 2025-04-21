@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <app-custom-input
+      label="Email"
+      errorMessage="Formato de correo incorrecto"
+      [control]="loginForm.get('email')"
+      type="email"
+      placeHolder="Enter your email"
+    />
+    <app-custom-input
+      label="Password"
+      errorMessage="Formato de contraseña incorrecto"
+      [control]="loginForm.get('password')"
+      type="password"
+      placeHolder="Enter your password"
+    />
+    <button type="submit" [disabled]="loginForm.invalid">Ingresar</button>
+  </form>
+</div>

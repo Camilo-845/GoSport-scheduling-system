@@ -1,1 +1,33 @@
-<p>register works!</p>
+<div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <app-custom-input
+      label="Full Name"
+      errorMessage="No se ingreso ningun valor"
+      [control]="registerForm.get('fullName')"
+      type="text"
+      placeHolder="Enter yout full name"
+    />
+    <app-custom-input
+      label="Email"
+      errorMessage="Invalid Format"
+      [control]="registerForm.get('email')"
+      type="email"
+      placeHolder="Enter your email"
+    />
+    <app-custom-input
+      label="Number"
+      errorMessage="Invalid Format"
+      [control]="registerForm.get('number')"
+      type="number"
+      placeHolder="Enter your Number"
+    />
+    <app-custom-input
+      label="Password"
+      errorMessage="Invalid Password"
+      [control]="registerForm.get('password')"
+      type="password"
+      placeHolder="Enter your password"
+    />
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  </form>
+</div>

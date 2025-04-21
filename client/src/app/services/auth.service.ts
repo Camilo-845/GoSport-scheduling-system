@@ -9,7 +9,7 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly baseUrl = 'http://localhost:8080/auth';
+  private readonly baseUrl = 'http://localhost:8082/auth';
   http = inject(HttpClient);
 
   login(user: AuthData): Observable<string> {

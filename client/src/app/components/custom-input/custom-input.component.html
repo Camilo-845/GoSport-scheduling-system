@@ -1,0 +1,11 @@
+<div>
+  <label>{{ label() }}</label>
+  <input
+    [formControl]="$any(control())"
+    [placeholder]="placeHolder()"
+    [type]="type()"
+  />
+  @if (control() && control()!.invalid && control()!.touched) {
+    <small class="error">{{ errorMessage() }}</small>
+  }
+</div>
