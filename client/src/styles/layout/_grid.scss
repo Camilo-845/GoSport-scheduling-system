@@ -1,0 +1,11 @@
+.container {
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 $spacing-unit;
+}
+
+.grid {
+  display: grid;
+  gap: $spacing-unit;
+}
