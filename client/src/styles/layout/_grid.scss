@@ -1,11 +1,12 @@
+@use "../abstracts/variables";
 .container {
   max-width: 72rem;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 $spacing-unit;
+  padding: 0 variables.$spacing-unit;
 }
 
 .grid {
   display: grid;
-  gap: $spacing-unit;
+  gap: variables.$spacing-unit;
 }

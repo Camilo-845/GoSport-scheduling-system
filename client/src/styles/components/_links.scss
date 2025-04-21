@@ -1,5 +1,6 @@
+@use "../abstracts/variables";
 a {
-  color: $color-primary;
+  color: variables.$color-primary;
   text-decoration: none;
 
   &:hover {
