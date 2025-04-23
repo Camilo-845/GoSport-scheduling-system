@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AppRoutes } from '@/app.routes';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,8 +8,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   imports: [],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavBarComponent {
-
+  router = inject(Router);
+  navToLogin() {
+    this.router.navigate([AppRoutes.public.login]);
+  }
+  navToRegister() {
+    this.router.navigate([AppRoutes.public.register]);
+  }
 }
