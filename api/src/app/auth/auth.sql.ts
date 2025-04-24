@@ -3,11 +3,11 @@ export const SQL_AUTH = {
         INSERT INTO Usuario
         (nombre, apellido, email, telefono,password)
         VALUES ($1, $2, $3, $4, $5)
-        RETURNING id_usuario,email;
+        RETURNING *;
     `,
 
   FIND_USER_BY_EMAIL: `
-        SELECT id_usuario, password
+        SELECT * 
         FROM Usuario
         WHERE "email" = $1;
     `,
