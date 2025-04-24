@@ -25,6 +25,7 @@ export const routes: Routes = [
   },
   {
     path: AppRoutes.public.login,
+    canActivate: [isLoggedGuard],
     loadComponent: () =>
       import('./public/components/login/login.component').then(
         (m) => m.LoginComponent,
@@ -32,6 +33,7 @@ export const routes: Routes = [
   },
   {
     path: AppRoutes.public.register,
+    canActivate: [isLoggedGuard],
     loadComponent: () =>
       import('./public/components/register/register.component').then(
         (m) => m.RegisterComponent,
