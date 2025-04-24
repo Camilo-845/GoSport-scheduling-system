@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction, raw } from "express";
+import { Request, Response, NextFunction } from "express";
 import { SQL_AUTH } from "./auth.sql";
 import pool from "../../config/connection/dbConnection";
 import {
@@ -8,12 +8,7 @@ import {
 import { ZodError } from "zod";
 import createHttpError, { HttpError } from "http-errors";
 import { signToken } from "./helpers/jwt_helper";
-import {
-  AuthAdapter,
-  DbUserResponse,
-  userAdapter,
-} from "../../adapters/auth.adapter";
-import { inspect } from "util";
+import { DbUserResponse, userAdapter } from "../../adapters/auth.adapter";
 
 class Auth_Controller {
   public async registerUser(req: Request, res: Response, _next: NextFunction) {

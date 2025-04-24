@@ -5,7 +5,6 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import apiRutaAuth from "../../app/auth/auth.route";
 import createHttpError, { HttpError } from "http-errors";
-import { verifyToken } from "../../app/auth/helpers/jwt_helper";
 
 dotenv.config({
   path: ".env",
@@ -23,7 +22,7 @@ class Server {
   public exposeEndPoint() {
     this.app.use("/auth", apiRutaAuth);
 
-    this.app.use(async (req, res, next) => {
+    this.app.use(async (_req, _res, next) => {
       next(createHttpError.NotFound());
     });
 
