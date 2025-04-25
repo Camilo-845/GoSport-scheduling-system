@@ -17,3 +17,7 @@ export const authChangePasswordSchema = z.object({
   oldPassword: z.string().min(2),
   newPassword: z.string().min(2),
 });
+
+export const authDeleteUserSchema = z.object({
+  password: z.string().min(2),
+});

@@ -18,6 +18,7 @@ class Auth_Route {
       verifyToken,
       authController.changePassword,
     );
+    this.apiRutaAuth.delete("", verifyToken, authController.deleteUser);
   }
 }
 

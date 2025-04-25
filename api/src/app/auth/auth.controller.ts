@@ -5,6 +5,7 @@ import {
   authRegisterSchema,
   authLoginSchema,
   authChangePasswordSchema,
+  authDeleteUserSchema,
 } from "./helpers/validation-schema";
 import { ZodError } from "zod";
 import createHttpError, { HttpError } from "http-errors";
@@ -117,6 +118,40 @@ class Auth_Controller {
         userExist.idUsuario,
         user.password,
       ]);
+      res.status(200).send("ok");
+    } catch (error) {
+      if (error instanceof ZodError) {
+        res.status(422).send(error.format());
+      } else {
+        next(error);
+      }
+    }
+  }
+
+  public async deleteUser(req: Request, res: Response, next: NextFunction) {
+    try {
+      const userId = req.payload?.userId;
+      if (!userId) {
+        throw new Error("userId not found on req payload");
+      }
+      const reqBody = authDeleteUserSchema.safeParse(req.body);
+      if (!reqBody.success) {
+        throw reqBody.error;
+      }
+
+      const userExist = await pool.oneOrNone<DbUserResponse>(
+        SQL_AUTH.FIND_USER_BY_ID,
+        userId,
+      );
+      if (!userExist) {
+        throw createHttpError.NotFound("User not registered");
+      }
+      const user = userAdapter(userExist);
+      const isMatch = await user.isValidPassword(reqBody.data.password);
+      if (!isMatch) {
+        throw createHttpError.Unauthorized("Username / password no valid");
+      }
+      await pool.none(SQL_AUTH.DELETE_USER_BY_ID, [userId]);
       res.status(200).send("ok");
     } catch (error) {
       if (error instanceof ZodError) {

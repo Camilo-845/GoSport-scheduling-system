@@ -22,4 +22,9 @@ export const SQL_AUTH = {
         SET password = $2
         WHERE id_usuario = $1;
   `,
+  DELETE_USER_BY_ID: `
+        DELETE
+        FROM Usuario
+        WHERE id_usuario = $1;
+`,
 };
