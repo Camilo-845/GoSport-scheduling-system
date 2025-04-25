@@ -48,7 +48,7 @@ class Auth_Controller {
       res.status(200).send({ token });
     } catch (error) {
       if (error instanceof ZodError) {
-        res.status(422).send(error);
+        res.status(422).send(error.format());
       } else if (error instanceof HttpError) {
         _next(error);
       } else {
@@ -82,7 +82,7 @@ class Auth_Controller {
       res.status(200).send({ token });
     } catch (error) {
       if (error instanceof ZodError) {
-        res.status(422).send(error);
+        res.status(422).send(error.format());
       } else {
         next(error);
       }
@@ -120,7 +120,7 @@ class Auth_Controller {
       res.status(200).send("ok");
     } catch (error) {
       if (error instanceof ZodError) {
-        res.status(422).send(error);
+        res.status(422).send(error.format());
       } else {
         next(error);
       }
