@@ -13,7 +13,7 @@ class Auth_Route {
   private misRutas() {
     this.apiRutaAuth.post("/register", authController.registerUser);
     this.apiRutaAuth.post("/login", authController.loginUser);
-    this.apiRutaAuth.post(
+    this.apiRutaAuth.put(
       "/changePassword",
       verifyToken,
       authController.changePassword,
