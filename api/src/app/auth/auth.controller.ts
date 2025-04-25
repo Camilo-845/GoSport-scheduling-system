@@ -4,6 +4,7 @@ import pool from "../../config/connection/dbConnection";
 import {
   authRegisterSchema,
   authLoginSchema,
+  authChangePasswordSchema,
 } from "./helpers/validation-schema";
 import { ZodError } from "zod";
 import createHttpError, { HttpError } from "http-errors";
@@ -79,6 +80,44 @@ class Auth_Controller {
       const token = await signToken(user.idUsuario);
 
       res.status(200).send({ token });
+    } catch (error) {
+      if (error instanceof ZodError) {
+        res.status(422).send(error);
+      } else {
+        next(error);
+      }
+    }
+  }
+
+  public async changePassword(req: Request, res: Response, next: NextFunction) {
+    try {
+      const userId = req.payload?.userId;
+      if (!userId) {
+        throw new Error("userId not found on req payload");
+      }
+      const parsed = authChangePasswordSchema.safeParse(req.body);
+      if (!parsed.success) {
+        throw parsed.error;
+      }
+      const userExist = await pool.oneOrNone<DbUserResponse>(
+        SQL_AUTH.FIND_USER_BY_ID,
+        userId,
+      );
+      if (!userExist) {
+        throw createHttpError.NotFound("User not registered");
+      }
+      const user = userAdapter(userExist);
+      const isMatch = await user.isValidPassword(parsed.data.oldPassword);
+      if (!isMatch) {
+        throw createHttpError.Unauthorized("Username / password no valid");
+      }
+      user.password = parsed.data.newPassword;
+      await user.encrytPassword();
+      await pool.none(SQL_AUTH.UPDATE_USER_PASSWORD_BY_ID, [
+        userExist.idUsuario,
+        user.password,
+      ]);
+      res.status(200).send("ok");
     } catch (error) {
       if (error instanceof ZodError) {
         res.status(422).send(error);

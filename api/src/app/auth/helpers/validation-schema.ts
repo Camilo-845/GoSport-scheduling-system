@@ -12,3 +12,8 @@ export const authLoginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(2),
 });
+
+export const authChangePasswordSchema = z.object({
+  oldPassword: z.string().min(2),
+  newPassword: z.string().min(2),
+});

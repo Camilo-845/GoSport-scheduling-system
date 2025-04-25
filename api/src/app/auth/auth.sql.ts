@@ -13,8 +13,13 @@ export const SQL_AUTH = {
     `,
 
   FIND_USER_BY_ID: `
-        SELECT nombre, apellido, email, telefono,password
+        SELECT * 
         FROM Usuario
         WHERE id_usuario = $1;
     `,
+  UPDATE_USER_PASSWORD_BY_ID: `
+        UPDATE Usuario
+        SET password = $2
+        WHERE id_usuario = $1;
+  `,
 };

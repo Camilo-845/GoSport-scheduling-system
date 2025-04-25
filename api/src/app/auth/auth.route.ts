@@ -1,5 +1,6 @@
 import { Router } from "express";
 import authController from "./auth.controller";
+import { verifyToken } from "./helpers/jwt_helper";
 
 class Auth_Route {
   public apiRutaAuth: Router;
@@ -12,6 +13,11 @@ class Auth_Route {
   private misRutas() {
     this.apiRutaAuth.post("/register", authController.registerUser);
     this.apiRutaAuth.post("/login", authController.loginUser);
+    this.apiRutaAuth.post(
+      "/changePassword",
+      verifyToken,
+      authController.changePassword,
+    );
   }
 }
 
