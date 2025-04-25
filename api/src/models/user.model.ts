@@ -46,4 +46,13 @@ export class User extends Auth {
       this.password,
     ];
   }
+  toJSON() {
+    return {
+      id_usuario: this.id_usuario,
+      nombre: this.nombre,
+      email: this.email,
+      apellido: this.apellido,
+      telefono: this.telefono,
+    };
+  }
 }

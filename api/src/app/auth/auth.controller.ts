@@ -10,7 +10,7 @@ import {
 import { ZodError } from "zod";
 import createHttpError, { HttpError } from "http-errors";
 import { signToken } from "./helpers/jwt_helper";
-import { DbUserResponse, userAdapter } from "../../adapters/auth.adapter";
+import { DbUserResponse, userAdapter } from "../../adapters/user.adapter";
 
 class Auth_Controller {
   public async registerUser(req: Request, res: Response, _next: NextFunction) {
