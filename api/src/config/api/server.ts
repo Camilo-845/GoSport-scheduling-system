@@ -30,7 +30,12 @@ class Server {
 
     this.app.use(
       (err: HttpError, _req: Request, res: Response, _next: NextFunction) => {
-        res.status(err.status || 500);
+        if (err.status) {
+          res.status(err.status);
+        } else {
+          res.status(500);
+          console.error(err);
+        }
         res.send({
           error: {
             status: err.status || 500,

@@ -10,6 +10,7 @@ class User_Route {
   }
   private myRoutes() {
     this.apiRouteUser.get("/", verifyToken, userController.getUserDetails);
+    this.apiRouteUser.put("/", verifyToken, userController.updateUser);
   }
 }
 const userRoute = new User_Route();

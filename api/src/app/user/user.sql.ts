@@ -5,8 +5,11 @@ export const SQL_USER = {
       WHERE id_usuario = $1
 `,
   UPDATE_USER: `
-      UPDATE (nombre, apellido,telefono)
-      VALUES($1 ,$2 ,$3)
+      UPDATE Usuario
+      SET nombre = $2,
+          apellido = $3,
+          telefono = $4
+      WHERE id_usuario = $1
       RETURNING *;
 `,
 };
