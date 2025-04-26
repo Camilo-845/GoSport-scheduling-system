@@ -14,8 +14,12 @@ body:json {
   {
     "nombre": "Juan",
     "apellido": "Perez",
-    "email": "juan23@example.com",
+    "email": "juan24@example.com",
     "telefono": 3124321432,
     "password": "hola123"
   }
+}
+
+script:post-response {
+  bru.setEnvVar("TOKEN", res.body.token);
 }
