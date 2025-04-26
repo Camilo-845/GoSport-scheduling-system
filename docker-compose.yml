@@ -3,9 +3,9 @@ services:
     image: httpd
     container_name: go-sport-web-app
     ports:
-    - '8080:80'
+      - "8080:80"
     volumes:
-    - ./view/:/usr/local/apache2/htdocs
+      - ./view/:/usr/local/apache2/htdocs
   postgres:
     image: postgres:13-alpine
     container_name: gosport_db
@@ -17,7 +17,7 @@ services:
       - "5434:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./DataBase/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U gosport_user -d gosport_db"]
       interval: 5s
@@ -27,10 +27,10 @@ services:
       - app_network
   api:
     build: ./api/
-    container_name: api_gosport 
+    container_name: api_gosport
     environment:
-      DB_NAME: gosport_db 
-      DB_USER: gosport_user 
+      DB_NAME: gosport_db
+      DB_USER: gosport_user
       DB_PORT: 5432
       DB_HOST: postgres
       DB_PASSWORD: gosport_password

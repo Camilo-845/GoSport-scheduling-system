@@ -1,0 +1,67 @@
+Table Usuario {
+	id_usuario serial [ pk ]
+	nombre varchar [ not null ]
+	apellido varchar [ not null ]
+	email varchar [ not null, unique ]
+	telefono bigint [ not null ]
+	password varchar [ not null ]
+}
+
+Table Deporte {
+	id_deporte serial [ pk ]
+	nombre varchar [ not null ]
+}
+
+Table Cancha {
+	id_cancha serial [ pk ]
+	nombre varchar [ not null ]
+	capacidad integer [ not null ]
+	id_deporte integer [ not null ]
+}
+
+Table Evento {
+	id_evento serial [ pk ]
+	nombre varchar [ not null ]
+	fecha date [ not null ]
+	hora_inicio time [ not null ]
+	id_cancha integer [ not null ]
+}
+
+Table Reserva {
+	id_reserva serial [ pk ]
+	fecha date [ not null ]
+	hora_inicio time [ not null ]
+	hora_fin time [ not null ]
+	id_ususario integer [ not null ]
+	id_cancha integer [ not null ]
+}
+
+Table Participante {
+	id_participante serial [ pk ]
+	id_usuario integer [ not null ]
+	id_evento integer [ not null ]
+}
+
+Ref fk_Cancha_id_deporte_Deporte {
+	Cancha.id_deporte > Deporte.id_deporte [ delete: no action, update: no action ]
+}
+
+Ref fk_Evento_id_cancha_Cancha {
+	Evento.id_cancha > Cancha.id_cancha [ delete: no action, update: no action ]
+}
+
+Ref fk_Reserva_id_ususario_Usuario {
+	Reserva.id_ususario > Usuario.id_usuario [ delete: no action, update: no action ]
+}
+
+Ref fk_Reserva_id_cancha_Cancha {
+	Reserva.id_cancha > Cancha.id_cancha [ delete: no action, update: no action ]
+}
+
+Ref fk_Participante_id_usuario_Usuario {
+	Participante.id_usuario > Usuario.id_usuario [ delete: no action, update: no action ]
+}
+
+Ref fk_Participante_id_evento_Evento {
+	Participante.id_evento > Evento.id_evento [ delete: no action, update: no action ]
+}
