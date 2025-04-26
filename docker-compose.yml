@@ -1,11 +1,4 @@
 services:
-  apache:
-    image: httpd
-    container_name: go-sport-web-app
-    ports:
-      - "8080:80"
-    volumes:
-      - ./view/:/usr/local/apache2/htdocs
   postgres:
     image: postgres:13-alpine
     container_name: gosport_db
