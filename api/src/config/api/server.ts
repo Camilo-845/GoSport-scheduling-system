@@ -21,8 +21,8 @@ class Server {
   }
 
   public exposeEndPoint() {
-    this.app.use("/auth", apiRutaAuth);
-    this.app.use("/user", apiRouteUser);
+    this.app.use("/api/auth", apiRutaAuth);
+    this.app.use("/api/user", apiRouteUser);
 
     this.app.use(async (_req, _res, next) => {
       next(createHttpError.NotFound());

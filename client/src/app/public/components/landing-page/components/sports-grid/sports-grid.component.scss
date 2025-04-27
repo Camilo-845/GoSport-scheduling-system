@@ -1,0 +1,149 @@
+/* Sports Grid */
+.sports-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sport-card {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.sport-card:hover {
+  transform: translateY(-5px);
+}
+
+.futbol-motocross {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.sport {
+  position: relative;
+  height: 250px;
+  color: var(--white);
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.sport::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  z-index: 1;
+}
+
+.sport h2 {
+  position: relative;
+  z-index: 2;
+  font-size: 2rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.sport:hover h2 {
+  transform: translateY(0);
+}
+
+.sport p {
+  position: relative;
+  z-index: 2;
+  font-size: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.sport:hover p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.paintball {
+  height: 100%;
+}
+
+/* Sports Grid Backgrounds */
+.futbol {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("https://i.pinimg.com/736x/38/66/12/386612136da36e6017f7f1a0520cdf5e.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.motocross {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("https://i.pinimg.com/736x/fd/52/8c/fd528ca3e1ad054c02ac37be9a5c75c3.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.paintball {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("https://i.pinimg.com/736x/fc/12/da/fc12dafd474902c0d4f475042ccb0f6b.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Hover effects for sport cards */
+.sport::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+/* Responsive adjustments for sports grid */
+@media (max-width: 768px) {
+  .sports-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .sport {
+    height: 200px;
+  }
+
+  .sport h2 {
+    font-size: 1.8rem;
+    transform: translateY(0);
+  }
+
+  .sport p {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

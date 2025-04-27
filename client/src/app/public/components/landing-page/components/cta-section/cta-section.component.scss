@@ -1,0 +1,112 @@
+/* CTA Section */
+.cta-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.cta-section a {
+  text-decoration: none;
+}
+
+.cta-card {
+  background: var(--white);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.cta-card:hover {
+  transform: translateY(-5px);
+}
+
+.cta-card i {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-card.consulta i {
+  color: var(--primary-color);
+}
+
+.cta-card.opinion i {
+  color: #ffd700;
+}
+
+.cta-card h2 {
+  color: var(--text-color);
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.cta-card p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cta-button i {
+  font-size: 1rem;
+  margin: 0;
+  color: white;
+}
+
+.cta-card.consulta .cta-button {
+  background: var(--primary-color);
+}
+
+.cta-card.opinion .cta-button {
+  background: #ff6b6b;
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Ajustar responsive existente */
+@media (max-width: 768px) {
+  .cta-section {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-card {
+    padding: 2rem 1rem;
+  }
+
+  .cta-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
