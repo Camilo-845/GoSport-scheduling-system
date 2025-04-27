@@ -22,6 +22,9 @@ FROM nginx:alpine
 # Copy built Angular app files to Nginx HTML folder
 COPY --from=build /usr/src/app/dist/client/browser /usr/share/nginx/html
 
+# 🔥 Copiar tu configuración de nginx personalizada
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+
 # Expose port 80
 EXPOSE 80
 
