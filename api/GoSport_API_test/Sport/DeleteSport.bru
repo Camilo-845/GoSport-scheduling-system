@@ -1,0 +1,19 @@
+meta {
+  name: DeleteSport
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{URL}}/sport/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 1
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}

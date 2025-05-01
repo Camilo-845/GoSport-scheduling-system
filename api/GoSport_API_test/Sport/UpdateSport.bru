@@ -1,0 +1,23 @@
+meta {
+  name: UpdateSport
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{URL}}/sport/:id
+  body: json
+  auth: bearer
+}
+
+params:path {
+  id: 1
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}
+
+body:json {
+  {"nombre": "Fútbol Sala"}
+}

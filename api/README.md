@@ -7,7 +7,7 @@ This document provides the detailed API documentation for the Gosport system, wh
 The base URL for all endpoints is:
 
 ```
-https://api.gosport.com
+https://localhost:8081
 ```
 
 ## Authentication
@@ -17,6 +17,7 @@ https://api.gosport.com
 - **POST** `/api/auth/register`
 - **Description**: Registers a new user in the system.
 - **Request Body**:
+
   ```json
   {
     "nombre": "John",
@@ -32,6 +33,7 @@ https://api.gosport.com
 - **POST** `/api/auth/login`
 - **Description**: Logs in a user and returns a JWT token for authentication.
 - **Request Body**:
+
   ```json
   {
     "email": "john.doe@example.com",
@@ -44,6 +46,7 @@ https://api.gosport.com
 - **PUT** `/api/auth/changePassword`
 - **Description**: Changes the password for the currently authenticated user.
 - **Request Body**:
+
   ```json
   {
     "oldPassword": "oldpassword",
@@ -70,6 +73,7 @@ https://api.gosport.com
 - **PUT** `/api/user`
 - **Description**: Updates the current user's information.
 - **Request Body**:
+
   ```json
   {
     "nombre": "John",
@@ -112,6 +116,7 @@ https://api.gosport.com
 - **POST** `/api/reservas`
 - **Description**: Creates a new reservation for a court.
 - **Request Body**:
+
   ```json
   {
     "id_cancha": 1,
@@ -150,6 +155,7 @@ https://api.gosport.com
 - **POST** `/api/eventos`
 - **Description**: Creates a new event.
 - **Request Body**:
+
   ```json
   {
     "nombre": "Torneo de Fútbol",
@@ -173,6 +179,7 @@ https://api.gosport.com
 - **POST** `/api/deportes`
 - **Description**: Creates a new sport.
 - **Request Body**:
+
   ```json
   {
     "nombre": "Fútbol"
@@ -184,6 +191,7 @@ https://api.gosport.com
 - **PUT** `/api/deportes/{id_deporte}`
 - **Description**: Edits an existing sport.
 - **Request Body**:
+
   ```json
   {
     "nombre": "Fútbol Sala"
