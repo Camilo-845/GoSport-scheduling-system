@@ -32,7 +32,7 @@ CREATE TABLE Reserva (
   fecha date NOT NULL,
   hora_inicio time NOT NULL,
   hora_fin time NOT NULL,
-  id_ususario integer NOT NULL,
+  id_usuario integer NOT NULL,
   id_cancha integer NOT NULL
 );
 

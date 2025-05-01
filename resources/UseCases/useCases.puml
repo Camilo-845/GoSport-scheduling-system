@@ -1,0 +1,58 @@
+
+@startuml
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor<<include>> LightBlue
+  BackgroundColor<<extend>> LightGreen
+  BorderColor Black
+  ArrowColor Black
+  ActorBorderColor Black
+}
+
+left to right direction
+
+actor Usuario as U
+actor Administrador as A
+
+rectangle "Sistema de Reservas Deportivas" {
+
+  package "Autenticación" {
+    U --> (Registrarse)
+    U --> (Iniciar sesión)
+  }
+
+  package "Consultas" {
+    U --> (Ver deportes disponibles)
+    U --> (Ver canchas disponibles)
+    U --> (Ver eventos)
+    U --> (Ver participantes de evento)
+    A --> (Ver reservas)
+  }
+
+  package "Reservas" {
+    U --> (Reservar cancha)
+    (Reservar cancha) --> (Consultar disponibilidad de cancha) : <<include>>
+    U --> (Cancelar reserva)
+    (Cancelar reserva) --> (Reservar cancha) : <<extend>>
+  }
+
+  package "Eventos" {
+    U --> (Unirse a evento)
+    (Unirse a evento) --> (Ver eventos) : <<include>>
+    U --> (Cancelar participación en evento)
+    (Cancelar participación en evento) --> (Unirse a evento) : <<extend>>
+
+    A --> (Crear evento)
+    (Crear evento) --> (Ver canchas disponibles) : <<include>>
+    (Crear evento) --> (Ver deportes disponibles) : <<include>>
+  }
+
+  package "Administración de Deportes" {
+    A --> (Gestionar deportes)
+    (Gestionar deportes) --> (Crear deporte) : <<include>>
+    (Gestionar deportes) --> (Editar deporte) : <<include>>
+    (Gestionar deportes) --> (Eliminar deporte) : <<include>>
+  }
+}
+
+@enduml

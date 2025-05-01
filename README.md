@@ -23,7 +23,7 @@ docker-compose up -d --build
 
 ## [Modelo de base de datos](./DataBase/README.md)
 
-![dbDiagram](./resources/DbDiagrampng)
+![dbDiagram](./resources/DbDiagram.png)
 
 ## Funcionamiento
 
