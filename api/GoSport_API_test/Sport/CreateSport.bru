@@ -1,0 +1,19 @@
+meta {
+  name: CreateSport
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{URL}}/sport/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}
+
+body:json {
+  {"nombre": "futbol"}
+}
