@@ -10,6 +10,7 @@ class Sport_Route {
   }
   private myRoutes() {
     this.apiRouteSport.get("/", verifyToken, sportController.getAllSports);
+    this.apiRouteSport.post("/", verifyToken, sportController.createSport);
   }
 }
 

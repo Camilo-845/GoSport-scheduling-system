@@ -3,4 +3,11 @@ export const SQL_SPORT = {
     SELECT *
     FROM Deporte;
 `,
+
+  ADD_SPORT: `
+    INSERT INTO Deporte
+    (nombre)
+    VALUES ($1)
+    RETURNING *;
+  `,
 };
