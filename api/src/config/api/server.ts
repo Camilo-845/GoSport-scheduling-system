@@ -7,6 +7,7 @@ import apiRutaAuth from "../../app/auth/auth.route";
 import createHttpError, { HttpError } from "http-errors";
 import apiRouteUser from "../../app/user/user.route";
 import apiRouteSport from "../../app/sport/sport.route";
+import apiRouteCourt from "../../app/court/court.route";
 
 dotenv.config({
   path: ".env",
@@ -25,6 +26,7 @@ class Server {
     this.app.use("/api/auth", apiRutaAuth);
     this.app.use("/api/user", apiRouteUser);
     this.app.use("/api/sport", apiRouteSport);
+    this.app.use("/api/court", apiRouteCourt);
 
     this.app.use(async (_req, _res, next) => {
       next(createHttpError.NotFound());
