@@ -1,0 +1,15 @@
+meta {
+  name: GetAllEvents
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{URL}}/event
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}

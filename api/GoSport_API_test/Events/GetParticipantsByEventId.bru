@@ -1,0 +1,19 @@
+meta {
+  name: GetParticipantsByEventId
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{URL}}/event/:id/participants
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 1
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}
