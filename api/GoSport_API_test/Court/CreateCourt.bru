@@ -1,0 +1,23 @@
+meta {
+  name: CreateCourt
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{URL}}/court
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}
+
+body:json {
+  {
+    "nombre": "Cancha 5",
+    "capacidad": 3,
+    "id_deporte": 4
+  }
+}

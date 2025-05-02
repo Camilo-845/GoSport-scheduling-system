@@ -1,0 +1,19 @@
+meta {
+  name: GetCourtById
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{URL}}/court/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 10
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}

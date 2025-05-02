@@ -1,0 +1,27 @@
+meta {
+  name: UpdateCourt
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{URL}}/court/:id
+  body: json
+  auth: bearer
+}
+
+params:path {
+  id: 11
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}
+
+body:json {
+  {
+    "nombre": "Cancha 55",
+    "capacidad": 2,
+    "id_deporte": 4
+  }
+}

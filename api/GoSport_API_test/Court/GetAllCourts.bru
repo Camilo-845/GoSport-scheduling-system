@@ -1,0 +1,15 @@
+meta {
+  name: GetAllCourts
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{URL}}/court
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}
