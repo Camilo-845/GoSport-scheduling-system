@@ -1,67 +1,94 @@
-# Go Sport - Aplicación web de Agendamientos
+# 🏀 Go Sport - Aplicación web de Agendamientos
 
-> Aplicación web de agendamientos de espacios deportivos construida
-> con angular, nodejs y postreSQL
+> 📅 Aplicación web de agendamientos de espacios deportivos construida  
+> con Angular, Node.js , PostgreSQL y Docker
 
-## Inicializar
+---
 
-### Requerimientos
+## ⚙️ Inicializar
 
-- Docker
-- Docker-compose
+### ✅ Requerimientos
 
-Iniciar contendores
+- 🐳 [Docker](https://docs.docker.com/engine/install/)
+
+### 🚀 Iniciar contenedores
 
 ```sh
-docker-compose up -d --build
+sudo docker compose up -d --build
 ```
 
-- Localmente disponible en el puesto 8080 [localhost:8080](http://localhost:8080/)
-- API en el puerto 8081
+- 🌐 Localmente disponible en el puerto 8080: [localhost:8080](http://localhost:8080/)
 
-## Diagrama de Casos de Uso
+---
 
-## [Modelo de base de datos](./DataBase/README.md)
+## 📁 Estructura del proyecto
+
+### 🧩 [Client](./client/)
+
+Contiene la aplicación frontend desarrollada en **Angular 19**. Aquí se gestiona la interfaz de usuario, la navegación, el consumo de la API y los estilos.
+
+### 🚀 [API](./api/)
+
+Contiene la lógica del backend desarrollada con **Node.js 18** y **TypeScript**. Incluye controladores, rutas, servicios y configuración del servidor. Esta carpeta se encarga de exponer los endpoints REST para ser consumidos por el cliente.
+
+### 🗄️ [DataBase](./DataBase/)
+
+Contiene los scripts de definición y migración de base de datos para **PostgreSQL 13**, modelos, consultas SQL y configuraciones del ORM. También puede incluir datos de prueba (seeds) y archivos de inicialización.
+
+---
+
+## 🧭 Puertos del Proyecto
+
+- 🧩 **Cliente (Angular)**: [`http://localhost:8080`](http://localhost:8080)
+- 🚀 **API (Node.js)**: [`http://localhost:8081`](http://localhost:8081)
+- 🗄️ **Base de Datos (PostgreSQL 13)**: `localhost:5434`
+
+---
+
+## 🧩 [Diagrama de Casos de Uso](./resources/UseCases/useCases.puml)
+
+## 🗄️ [Modelo de base de datos](./DataBase/README.md)
 
 ![dbDiagram](./resources/DbDiagram.png)
 
-## Funcionamiento
+---
 
-La aplicación "Go Sport" permite a los usuarios registrarse y iniciar
-sesión para acceder a funcionalidades de agendamiento de espacios deportivos.
+## 🧪 Funcionamiento
 
-A continuación se describen los pasos para utilizar la aplicación:
+### 👤 1. Autenticación de usuarios
 
-1. **Registro de Usuario**:
+- Los usuarios pueden **registrarse** mediante un formulario que solicita nombre, correo, teléfono y contraseña.
+- Una vez registrados, pueden **iniciar sesión** para acceder al sistema.
+- Ambas operaciones se comunican con la API a través de solicitudes HTTP `POST` a los endpoints `/auth/register` y `/auth/login`.
 
-   - Los nuevos usuarios pueden registrarse a través de la página de registro (`signup.html`).
-   - Se requiere que ingresen su nombre completo, apellido, correo electrónico,
-     teléfono y una contraseña.
-   - Al enviar el formulario, se realiza una solicitud POST a la API en
-     `http://localhost:8081/auth/register`.
-   - Si el registro es exitoso, se muestra una alerta de éxito utilizando SweetAlert2.
-     Si hay un error, se muestra un mensaje de error.
+### 📋 2. Consultas generales
 
-2. **Inicio de Sesión**:
+- Los usuarios autenticados pueden:
 
-   - Los usuarios existentes pueden iniciar sesión a través de la página
-     de inicio de sesión (`login.html`).
-   - Se requiere que ingresen su correo electrónico y contraseña.
-   - Al enviar el formulario, se realiza una solicitud POST a la API en `http://localhost:8081/auth/login`.
-   - Si el inicio de sesión es exitoso, se muestra una alerta de éxito.
-     Si hay un error, se muestra un mensaje de error.
+  - **Ver los deportes disponibles**.
+  - **Consultar canchas habilitadas** según deporte y disponibilidad.
+  - **Visualizar eventos** deportivos abiertos.
+  - **Ver la lista de participantes de eventos**.
 
-3. **Interacción con la API**:
+- Los administradores, además, pueden **ver todas las reservas existentes** para fines de gestión.
 
-   - La aplicación se comunica con la API a través de solicitudes HTTP
-     utilizando `fetch`.
-   - La API está configurada para manejar las solicitudes de registro e inicio
-     de sesión, y responde con mensajes adecuados según el resultado de la operación.
+### 🏟️ 3. Reservas deportivas
 
-4. **Alertas**:
-   - Se utiliza SweetAlert2 para mostrar alertas de éxito y error, mejorando
-     la experiencia del usuario al proporcionar retroalimentación visual
-     clara sobre las acciones realizadas.
+- Los usuarios pueden **reservar canchas deportivas** disponibles, consultando previamente la disponibilidad.
+- También pueden **cancelar reservas previamente realizadas** si lo desean.
 
-Con estas funcionalidades, los usuarios pueden gestionar su acceso a la
-plataforma de agendamientos de manera sencilla y efectiva.
+### 📆 4. Participación en eventos
+
+- Los usuarios pueden:
+  - **Unirse a eventos deportivos** disponibles.
+  - **Cancelar su participación** si no pueden asistir.
+  - Ambos casos están relacionados: unirse incluye ver eventos; cancelar extiende la participación.
+- Los administradores pueden:
+  - **Crear nuevos eventos**, los cuales automáticamente incluyen selección de deporte y visibilidad para los usuarios.
+
+### 🛠️ 5. Administración del sistema (rol administrador)
+
+- Los administradores tienen acceso a funcionalidades avanzadas de gestión:
+  - **Gestionar deportes** existentes (crear, editar, eliminar).
+  - **Gestionar eventos**, incluyendo su creación y asignación de canchas y deportes.
+  - **Consultar todas las reservas** y tener visibilidad sobre la actividad en el sistema.
