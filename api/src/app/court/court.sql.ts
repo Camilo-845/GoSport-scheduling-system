@@ -29,6 +29,5 @@ export const SQL_COURT = {
     DELETE
     FROM Cancha
     WHERE id_cancha = $1
-    RETURNING *;
   `,
 };

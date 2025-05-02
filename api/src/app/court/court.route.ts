@@ -12,8 +12,8 @@ class Court_Route {
     this.apiRouteCourt.get("/", verifyToken, courtController.getAllCourts);
     this.apiRouteCourt.post("/", verifyToken, courtController.createCourt);
     this.apiRouteCourt.get("/:id", verifyToken, courtController.getCourtById);
-    this.apiRouteCourt.get("/:id", verifyToken, courtController.updateCourt);
-    this.apiRouteCourt.get("/:id", verifyToken, courtController.deleteCourt);
+    this.apiRouteCourt.put("/:id", verifyToken, courtController.updateCourt);
+    this.apiRouteCourt.delete("/:id", verifyToken, courtController.deleteCourt);
   }
 }
 
