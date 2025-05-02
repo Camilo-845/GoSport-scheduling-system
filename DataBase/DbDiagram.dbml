@@ -32,14 +32,13 @@ Table Reserva {
 	fecha date [ not null ]
 	hora_inicio time [ not null ]
 	hora_fin time [ not null ]
-	id_ususario integer [ not null ]
+	id_usuario integer [ not null ]
 	id_cancha integer [ not null ]
 }
 
 Table Participante {
-	id_participante serial [ pk ]
-	id_usuario integer [ not null ]
-	id_evento integer [ not null ]
+	id_usuario integer [ pk, not null ]
+	id_evento integer [ pk, not null ]
 }
 
 Ref fk_Cancha_id_deporte_Deporte {
@@ -50,8 +49,8 @@ Ref fk_Evento_id_cancha_Cancha {
 	Evento.id_cancha > Cancha.id_cancha [ delete: no action, update: no action ]
 }
 
-Ref fk_Reserva_id_ususario_Usuario {
-	Reserva.id_ususario > Usuario.id_usuario [ delete: no action, update: no action ]
+Ref fk_Reserva_id_usuario_Usuario {
+	Reserva.id_usuario > Usuario.id_usuario [ delete: no action, update: no action ]
 }
 
 Ref fk_Reserva_id_cancha_Cancha {

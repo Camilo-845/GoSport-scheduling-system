@@ -37,8 +37,10 @@ CREATE TABLE Reserva (
 );
 
 CREATE TABLE Participante (
-  id_participante SERIAL PRIMARY KEY,
-  id_usuario integer NOT NULL, id_evento integer NOT NULL
+
+  id_usuario integer NOT NULL,
+  id_evento integer NOT NULL,
+  PRIMARY KEY(id_usuario, id_evento)
 );
 
 ALTER TABLE Cancha ADD FOREIGN KEY (id_deporte) REFERENCES Deporte (id_deporte);

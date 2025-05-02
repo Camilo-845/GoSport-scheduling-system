@@ -1,4 +1,4 @@
-# GoSportDB documentation
+# Untitled diagram documentation
 
 ## Summary
 
@@ -61,22 +61,21 @@
 
 ### Reserva
 
-| Name            | Type    | Settings    | References                     | Note |
-| --------------- | ------- | ----------- | ------------------------------ | ---- |
-| **id_reserva**  | SERIAL  | 🔑 PK, null |                                |      |
-| **fecha**       | DATE    | not null    |                                |      |
-| **hora_inicio** | TIME    | not null    |                                |      |
-| **hora_fin**    | TIME    | not null    |                                |      |
-| **id_ususario** | INTEGER | not null    | fk_Reserva_id_ususario_Usuario |      |
-| **id_cancha**   | INTEGER | not null    | fk_Reserva_id_cancha_Cancha    |      |
+| Name            | Type    | Settings    | References                    | Note |
+| --------------- | ------- | ----------- | ----------------------------- | ---- |
+| **id_reserva**  | SERIAL  | 🔑 PK, null |                               |      |
+| **fecha**       | DATE    | not null    |                               |      |
+| **hora_inicio** | TIME    | not null    |                               |      |
+| **hora_fin**    | TIME    | not null    |                               |      |
+| **id_usuario**  | INTEGER | not null    | fk_Reserva_id_usuario_Usuario |      |
+| **id_cancha**   | INTEGER | not null    | fk_Reserva_id_cancha_Cancha   |      |
 
 ### Participante
 
-| Name                | Type    | Settings    | References                         | Note |
-| ------------------- | ------- | ----------- | ---------------------------------- | ---- |
-| **id_participante** | SERIAL  | 🔑 PK, null |                                    |      |
-| **id_usuario**      | INTEGER | not null    | fk_Participante_id_usuario_Usuario |      |
-| **id_evento**       | INTEGER | not null    | fk_Participante_id_evento_Evento   |      |
+| Name           | Type    | Settings        | References                         | Note |
+| -------------- | ------- | --------------- | ---------------------------------- | ---- |
+| **id_usuario** | INTEGER | 🔑 PK, not null | fk_Participante_id_usuario_Usuario |      |
+| **id_evento**  | INTEGER | 🔑 PK, not null | fk_Participante_id_evento_Evento   |      |
 
 ## Relationships
 
@@ -91,54 +90,53 @@
 
 ```mermaid
 erDiagram
-	Cancha }o--|| Deporte : references
-	Evento }o--|| Cancha : references
-	Reserva }o--|| Usuario : references
-	Reserva }o--|| Cancha : references
-	Participante }o--|| Usuario : references
-	Participante }o--|| Evento : references
+ Cancha }o--|| Deporte : references
+ Evento }o--|| Cancha : references
+ Reserva }o--|| Usuario : references
+ Reserva }o--|| Cancha : references
+ Participante }o--|| Usuario : references
+ Participante }o--|| Evento : references
 
-	Usuario {
-		SERIAL id_usuario
-		VARCHAR(255) nombre
-		VARCHAR(255) apellido
-		VARCHAR(255) email
-		BIGINT telefono
-		VARCHAR(255) password
-	}
+ Usuario {
+  SERIAL id_usuario
+  VARCHAR(255) nombre
+  VARCHAR(255) apellido
+  VARCHAR(255) email
+  BIGINT telefono
+  VARCHAR(255) password
+ }
 
-	Deporte {
-		SERIAL id_deporte
-		VARCHAR(255) nombre
-	}
+ Deporte {
+  SERIAL id_deporte
+  VARCHAR(255) nombre
+ }
 
-	Cancha {
-		SERIAL id_cancha
-		VARCHAR(255) nombre
-		INTEGER capacidad
-		INTEGER id_deporte
-	}
+ Cancha {
+  SERIAL id_cancha
+  VARCHAR(255) nombre
+  INTEGER capacidad
+  INTEGER id_deporte
+ }
 
-	Evento {
-		SERIAL id_evento
-		VARCHAR(255) nombre
-		DATE fecha
-		TIME hora_inicio
-		INTEGER id_cancha
-	}
+ Evento {
+  SERIAL id_evento
+  VARCHAR(255) nombre
+  DATE fecha
+  TIME hora_inicio
+  INTEGER id_cancha
+ }
 
-	Reserva {
-		SERIAL id_reserva
-		DATE fecha
-		TIME hora_inicio
-		TIME hora_fin
-		INTEGER id_ususario
-		INTEGER id_cancha
-	}
+ Reserva {
+  SERIAL id_reserva
+  DATE fecha
+  TIME hora_inicio
+  TIME hora_fin
+  INTEGER id_usuario
+  INTEGER id_cancha
+ }
 
-	Participante {
-		SERIAL id_participante
-		INTEGER id_usuario
-		INTEGER id_evento
-	}
+ Participante {
+  INTEGER id_usuario
+  INTEGER id_evento
+ }
 ```
