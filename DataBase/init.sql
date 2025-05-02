@@ -38,15 +38,14 @@ CREATE TABLE Reserva (
 
 CREATE TABLE Participante (
   id_participante SERIAL PRIMARY KEY,
-  id_usuario integer NOT NULL,
-  id_evento integer NOT NULL
+  id_usuario integer NOT NULL, id_evento integer NOT NULL
 );
 
 ALTER TABLE Cancha ADD FOREIGN KEY (id_deporte) REFERENCES Deporte (id_deporte);
 
 ALTER TABLE Evento ADD FOREIGN KEY (id_cancha) REFERENCES Cancha (id_cancha);
 
-ALTER TABLE Reserva ADD FOREIGN KEY (id_ususario) REFERENCES Usuario (id_usuario);
+ALTER TABLE Reserva ADD FOREIGN KEY (id_usuario) REFERENCES Usuario (id_usuario);
 
 ALTER TABLE Reserva ADD FOREIGN KEY (id_cancha) REFERENCES Cancha (id_cancha);
 
