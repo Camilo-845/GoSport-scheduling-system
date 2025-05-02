@@ -10,7 +10,8 @@ services:
       - "5434:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./DataBase/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./DataBase/init.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./DataBase/dml.sql:/docker-entrypoint-initdb.d/02-dml.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U gosport_user -d gosport_db"]
       interval: 5s
