@@ -7,7 +7,7 @@ import { Sport } from "../../models";
 
 class SportController {
   // Obtener todos los deportes
-  public async getAllSports(req: Request, res: Response, next: NextFunction) {
+  public async getAllSports(_req: Request, res: Response, next: NextFunction) {
     try {
       const data = await pool.manyOrNone(SQL_SPORT.GET_ALL_SPORTS);
       res.status(200).send(data);
