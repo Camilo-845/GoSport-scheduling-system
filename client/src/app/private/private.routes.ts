@@ -17,6 +17,11 @@ export const router: Routes = [
         loadComponent: () =>
           import('./home/home.component').then((m) => m.HomeComponent),
       },
+      {
+        path: AppRoutes.private.user,
+        loadComponent: () =>
+          import('./user/user.component').then((m) => m.UserComponent),
+      },
     ],
   },
 ];
