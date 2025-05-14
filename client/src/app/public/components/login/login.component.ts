@@ -10,6 +10,8 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { FooterComponent } from '@/components/footer/footer.component';
 
 interface loginForm {
   email: FormControl<string>;
@@ -19,7 +21,12 @@ interface loginForm {
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CustomInputComponent],
+  imports: [
+    ReactiveFormsModule,
+    CustomInputComponent,
+    NavBarComponent,
+    FooterComponent,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
