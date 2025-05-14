@@ -1,5 +1,10 @@
-<div>
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<div class="login-page">
+  <app-nav-bar />
+  <form
+    class="login-form-container"
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+  >
     <app-custom-input
       label="First Name"
       errorMessage="No se ingreso ningun valor"
@@ -36,5 +41,7 @@
       placeHolder="Enter your password"
     />
     <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    <p>ya estas registrado? <a href="/login">ingresa</a></p>
   </form>
+  <app-footer />
 </div>

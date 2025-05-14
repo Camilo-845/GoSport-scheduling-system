@@ -10,6 +10,8 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { FooterComponent } from '@/components/footer/footer.component';
 
 interface registerForm {
   firstName: FormControl<string>;
@@ -22,7 +24,12 @@ interface registerForm {
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, CustomInputComponent],
+  imports: [
+    ReactiveFormsModule,
+    CustomInputComponent,
+    NavBarComponent,
+    FooterComponent,
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
