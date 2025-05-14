@@ -12,6 +12,8 @@ export const AppRoutes = {
     root: 'private',
     home: 'home',
     user: 'user',
+    editUserInfo: 'editUserInfo',
+    changePassword: 'changePassword',
   },
 };
 export const routes: Routes = [

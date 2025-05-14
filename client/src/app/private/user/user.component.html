@@ -1,1 +1,19 @@
-<p>user works!</p>
+<div class="user-card">
+  @if (user()) {
+    <div class="avatar">
+      <i class="fas fa-user-circle"></i>
+    </div>
+    <div class="user-details">
+      <h2>{{ user()?.nombre }} {{ user()?.apellido }}</h2>
+      <p><strong>Email:</strong> {{ user()?.email }}</p>
+      <p><strong>Teléfono:</strong> {{ user()?.telefono }}</p>
+
+      <div class="actions">
+        <button class="btn primary" (click)="onEdit()">Actualizar info</button>
+        <button class="btn secondary" (click)="onChangePassword()">
+          Cambiar contraseña
+        </button>
+      </div>
+    </div>
+  }
+</div>

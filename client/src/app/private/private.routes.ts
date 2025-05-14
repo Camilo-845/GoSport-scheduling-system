@@ -22,6 +22,20 @@ export const router: Routes = [
         loadComponent: () =>
           import('./user/user.component').then((m) => m.UserComponent),
       },
+      {
+        path: AppRoutes.private.editUserInfo,
+        loadComponent: () =>
+          import(
+            './user/components/update-user-info/update-user-info.component'
+          ).then((m) => m.UpdateUserInfoComponent),
+      },
+      {
+        path: AppRoutes.private.changePassword,
+        loadComponent: () =>
+          import(
+            './user/components/change-password/change-password.component'
+          ).then((m) => m.ChangePasswordComponent),
+      },
     ],
   },
 ];

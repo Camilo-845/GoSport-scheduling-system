@@ -1,0 +1,75 @@
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 2rem auto;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.avatar {
+  font-size: 4rem;
+  color: var(--primary-color);
+}
+
+.user-details {
+  h2 {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-size: 1.6rem;
+  }
+
+  p {
+    margin: 0.3rem 0;
+    color: var(--text-color);
+    font-size: 1rem;
+
+    strong {
+      color: var(--secondary-color);
+    }
+  }
+}
+
+.actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &.primary {
+      background-color: var(--primary-color);
+      color: white;
+
+      &:hover {
+        background-color: var(--primary-hover);
+      }
+    }
+
+    &.secondary {
+      background-color: var(--secondary-color);
+      color: white;
+
+      &:hover {
+        background-color: var(--secondary-hover);
+      }
+    }
+  }
+}
