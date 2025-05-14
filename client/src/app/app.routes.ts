@@ -11,6 +11,7 @@ export const AppRoutes = {
   private: {
     root: 'private',
     home: 'home',
+    user: 'user',
   },
 };
 export const routes: Routes = [
@@ -46,7 +47,7 @@ export const routes: Routes = [
       import('./private/private.routes').then((m) => m.router),
   },
   {
-    path: '*',
+    path: '**',
     loadComponent: () =>
       import('./components/not-found/not-found.component').then(
         (m) => m.NotFoundComponent,
