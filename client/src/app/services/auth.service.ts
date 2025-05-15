@@ -1,5 +1,5 @@
 import { AuthAdapter, RegisterRequestAdapter } from '@/adapters';
-import { AuthData, LoginResponse, RegisterData } from '@/models';
+import { AuthData, LoginResponse, NewPassword, RegisterData } from '@/models';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { inject } from '@angular/core';
@@ -24,5 +24,8 @@ export class AuthService {
       `${this.baseUrl}/register`,
       RegisterRequestAdapter(userData),
     );
+  }
+  changePassword(newPasswordData: NewPassword) {
+    return this.http.put(`${this.baseUrl}/changePassword`, newPasswordData);
   }
 }

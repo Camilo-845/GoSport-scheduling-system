@@ -18,3 +18,8 @@ export interface RegisterData {
   firstName: string;
   lastName: string;
 }
+
+export interface NewPassword {
+  oldPassword: string;
+  newPassword: string;
+}
