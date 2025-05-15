@@ -1,0 +1,7 @@
+<div class="info-card">
+  <div class="tournament-list">
+    @for (event of events(); track event.id_evento) {
+      <app-event-details [event]="event" />
+    }
+  </div>
+</div>

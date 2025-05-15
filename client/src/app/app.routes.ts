@@ -14,6 +14,7 @@ export const AppRoutes = {
     user: 'user',
     editUserInfo: 'editUserInfo',
     changePassword: 'changePassword',
+    events: 'events',
   },
 };
 export const routes: Routes = [

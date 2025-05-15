@@ -1,0 +1,7 @@
+@let eventList = events();
+
+@if (eventList == undefined || eventList?.length === 0) {
+  <p>No events found</p>
+} @else {
+  <app-event-list [events]="eventList" />
+}

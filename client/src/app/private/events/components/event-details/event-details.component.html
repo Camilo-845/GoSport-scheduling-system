@@ -1,0 +1,15 @@
+@let eventItem = event();
+@let formatteDateValues = formattedDate();
+@let formattedTimeValues = formattedHour();
+
+<div class="tournament-item">
+  <div class="tournament-date">
+    <span class="day">{{ formatteDateValues.split(" ")[0] }}</span>
+    <span class="month">{{ formatteDateValues.split(" ")[1] }}</span>
+  </div>
+  <div class="tournament-info">
+    <h3>{{ eventItem.nombre }}</h3>
+    <p>Pista MX Santa Marta • {{ formattedTimeValues }}</p>
+  </div>
+  <button class="btn-join">Inscribirse</button>
+</div>
