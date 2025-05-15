@@ -1,1 +1,13 @@
-<p>event-preview-list works!</p>
+@let eventList = events();
+
+<div class="tournament-header">
+  <h2>Próximos Torneos y Eventos</h2>
+  <button class="btn-view-all" (click)="goMoreEvents()">
+    Ver todos <i class="fas fa-arrow-right"></i>
+  </button>
+</div>
+@if (eventList == undefined || eventList?.length === 0) {
+  <p>No events found</p>
+} @else {
+  <app-event-list [events]="eventList" />
+}
