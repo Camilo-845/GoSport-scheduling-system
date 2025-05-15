@@ -1,0 +1,27 @@
+<div class="uptate-user-card">
+  <form class="form-container" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+    <h2>Actualizar información Usuario</h2>
+    <app-custom-input
+      label="Nombre"
+      errorMessage="Formato de Nombre incorrecto"
+      [control]="updateForm.get('nombre')"
+      type="text"
+      placeHolder="Ingresa tu nombre"
+    />
+    <app-custom-input
+      label="Apellido"
+      errorMessage="Formato de Apellido incorrecto"
+      [control]="updateForm.get('apellido')"
+      type="text"
+      placeHolder="Ingresa tu apellido"
+    />
+    <app-custom-input
+      label="Telefono"
+      errorMessage="Formato de telefono incorrecto"
+      [control]="updateForm.get('telefono')"
+      type="number"
+      placeHolder="Ingresa tu telefono"
+    />
+    <button type="submit" [disabled]="updateForm.invalid">Actualizar</button>
+  </form>
+</div>

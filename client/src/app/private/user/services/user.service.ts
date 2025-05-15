@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { User } from '../models';
+import { UpdateUser, User } from '../models';
 import { catchError, of } from 'rxjs';
+import { updateUserRequestAdapter } from '@/adapters/user.adapter';
 
 @Injectable({
   providedIn: 'root',
@@ -30,5 +31,12 @@ export class UserService {
           });
         }
       });
+  }
+
+  updateUserIfo(userData: UpdateUser) {
+    return this.http.put<void>(
+      this.baseUrl,
+      updateUserRequestAdapter(userData),
+    );
   }
 }
