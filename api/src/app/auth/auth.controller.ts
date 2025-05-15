@@ -118,7 +118,7 @@ class Auth_Controller {
         userExist.idUsuario,
         user.password,
       ]);
-      res.status(200).send("ok");
+      res.status(200).send({ result: "ok" });
     } catch (error) {
       if (error instanceof ZodError) {
         res.status(422).send(error.format());
@@ -152,7 +152,7 @@ class Auth_Controller {
         throw createHttpError.Unauthorized("Username / password no valid");
       }
       await pool.none(SQL_AUTH.DELETE_USER_BY_ID, [userId]);
-      res.status(200).send("ok");
+      res.status(200).send({ result: "ok" });
     } catch (error) {
       if (error instanceof ZodError) {
         res.status(422).send(error.format());
