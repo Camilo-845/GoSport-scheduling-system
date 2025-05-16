@@ -47,7 +47,7 @@ export const SQL_EVENT = {
 `,
   REMOVE_PARTICIPANT_OF_EVENT: `
     DELETE 
-    FROM Participante,
+    FROM Participante
     WHERE id_evento = $2 AND id_usuario = $1;
 `,
 };

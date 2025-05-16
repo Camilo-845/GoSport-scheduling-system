@@ -1,0 +1,19 @@
+meta {
+  name: JoinEventsParticipant
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{URL}}/event/:id/participant
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 1
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}

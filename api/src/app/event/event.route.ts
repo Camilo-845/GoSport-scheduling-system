@@ -20,6 +20,11 @@ class Event_Route {
       verifyToken,
       eventController.cancelEventParticipation,
     );
+    this.apiRouteEvent.post(
+      "/:id/participant",
+      verifyToken,
+      eventController.joinParticipantToEventById,
+    );
   }
 }
 
