@@ -12,7 +12,8 @@ export const SQL_EVENT = {
       END AS es_participante
     FROM Evento E
     LEFT JOIN Participante P 
-      ON E.id_evento = P.id_evento AND P.id_usuario = $1;
+      ON E.id_evento = P.id_evento AND P.id_usuario = $1
+    WHERE E.fecha >= CURRENT_DATE;
   `,
 
   GET_EVENT_BY_ID: `
