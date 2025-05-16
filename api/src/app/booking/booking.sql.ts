@@ -45,6 +45,5 @@ export const SQL_RESERVA = {
     DELETE
     FROM Reserva
     WHERE id_reserva = $1
-    RETURNING *;
   `,
 };

@@ -1,0 +1,19 @@
+meta {
+  name: DeleteBooking
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{URL}}/booking/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 11
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}

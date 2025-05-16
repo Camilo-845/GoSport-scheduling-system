@@ -47,6 +47,15 @@ class BookingController {
       }
     }
   }
+  public async deleteBooking(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { id } = req.params;
+      await pool.none(SQL_RESERVA.DELETE_RESERVATION, id);
+      res.status(200).send({ result: "ok" });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 const bookingController = new BookingController();
