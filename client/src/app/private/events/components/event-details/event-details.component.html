@@ -11,5 +11,15 @@
     <h3>{{ eventItem.nombre }}</h3>
     <p>Pista MX Santa Marta • {{ formattedTimeValues }}</p>
   </div>
-  <button class="btn-join">Inscribirse</button>
+  <button
+    class="btn-join"
+    [disabled]="eventItem.esParticipante"
+    (click)="joinToEvent(eventItem.id_evento)"
+  >
+    @if (eventItem.esParticipante) {
+      Inscrito
+    } @else {
+      Inscribirse
+    }
+  </button>
 </div>

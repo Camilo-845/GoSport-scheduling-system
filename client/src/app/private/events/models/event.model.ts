@@ -4,6 +4,7 @@ export interface Event_model {
   fecha: string; // ISO format: YYYY-MM-DD
   hora_inicio: string; // Format: HH:mm:ss
   id_cancha: number;
+  esParticipante: boolean;
 }
 
 export interface GetEventResponse {
@@ -12,4 +13,5 @@ export interface GetEventResponse {
   idEvento: number;
   horaInicio: string;
   idCancha: number;
+  esParticipante: boolean;
 }

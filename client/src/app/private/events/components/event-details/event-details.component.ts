@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { Event_model } from '../../models/event.model';
 import { EventService } from '../../services';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-event-details',
@@ -35,4 +36,13 @@ export class EventDetailsComponent {
       hour12: true,
     });
   });
+
+  async joinToEvent(eventId: number) {
+    try {
+      await firstValueFrom(this.eventService.joinToEvent(eventId));
+      this.eventService.getEvents();
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }

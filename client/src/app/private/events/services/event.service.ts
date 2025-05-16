@@ -36,4 +36,7 @@ export class EventService {
         }
       });
   }
+  joinToEvent(idEvento: number) {
+    return this.http.post<void>(`${this.baseUrl}/${idEvento}/participant`, {});
+  }
 }

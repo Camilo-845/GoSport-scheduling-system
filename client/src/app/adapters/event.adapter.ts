@@ -10,6 +10,7 @@ export const getEventsResponse = (getEventsResponse: GetEventResponse) => {
     hora_inicio: getEventsResponse.horaInicio,
     id_evento: getEventsResponse.idEvento,
     id_cancha: getEventsResponse.idCancha,
+    esParticipante: getEventsResponse.esParticipante,
   };
   return adaptedEvent;
 };
