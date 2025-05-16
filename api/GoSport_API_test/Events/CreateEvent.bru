@@ -1,0 +1,24 @@
+meta {
+  name: CreateEvent
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{URL}}/event
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}
+
+body:json {
+  {
+    "nombre": "Nuevo evento123",
+    "fecha": "2025-08-10",
+    "hora_inicio": "10:00:00",
+    "id_cancha": 9
+  }
+}

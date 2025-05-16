@@ -25,6 +25,7 @@ class Event_Route {
       verifyToken,
       eventController.joinParticipantToEventById,
     );
+    this.apiRouteEvent.post("/", verifyToken, eventController.createEvent);
   }
 }
 

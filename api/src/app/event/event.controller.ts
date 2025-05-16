@@ -1,6 +1,13 @@
 import { NextFunction, Request, Response } from "express";
 import pool from "../../config/connection/dbConnection";
 import { SQL_EVENT } from "./event.sql";
+import { eventCreateSchema } from "./event.validator";
+import {
+  DbEventReponse,
+  EventAdapter,
+  EventObjectAdapter,
+} from "../../adapters/event.adapter";
+import { ZodError } from "zod";
 
 class EventController {
   public async getAllEvents(_req: Request, res: Response, next: NextFunction) {
@@ -51,6 +58,27 @@ class EventController {
       res.status(200).send({ message: "Participant removed Successfully" });
     } catch (error) {
       next(error);
+    }
+  }
+
+  public async createEvent(req: Request, res: Response, next: NextFunction) {
+    try {
+      const parsed = eventCreateSchema.safeParse(req.body);
+      if (!parsed.success) {
+        throw parsed.error;
+      }
+      const event = EventObjectAdapter(parsed.data as EventAdapter);
+      const result = await pool.one<DbEventReponse>(
+        SQL_EVENT.CREATE_EVENT,
+        event.toArray(),
+      );
+      res.status(200).send(result);
+    } catch (error) {
+      if (error instanceof ZodError) {
+        res.status(422).send(error.format());
+      } else {
+        next(error);
+      }
     }
   }
 }
