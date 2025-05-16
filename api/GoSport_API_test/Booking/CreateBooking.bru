@@ -1,0 +1,26 @@
+meta {
+  name: CreateBooking
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{URL}}/booking
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}
+
+body:json {
+    {
+      "fecha": "2025-06-01",
+      "idReserva": 1,
+      "hora_inicio": "08:00:00",
+      "hora_fin": "09:00:00",
+      "id_usuario": 12,
+      "id_cancha": 1
+    }
+}

@@ -9,6 +9,7 @@ import apiRouteUser from "../../app/user/user.route";
 import apiRouteSport from "../../app/sport/sport.route";
 import apiRouteEvent from "../../app/event/event.route";
 import apiRouteCourt from "../../app/court/court.route";
+import apiRouteBooking from "../../app/booking/booking.route";
 
 dotenv.config({
   path: ".env",
@@ -29,6 +30,7 @@ class Server {
     this.app.use("/api/sport", apiRouteSport);
     this.app.use("/api/event", apiRouteEvent);
     this.app.use("/api/court", apiRouteCourt);
+    this.app.use("/api/booking", apiRouteBooking);
 
     this.app.use(async (_req, _res, next) => {
       next(createHttpError.NotFound());
