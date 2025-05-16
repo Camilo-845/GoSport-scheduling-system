@@ -10,9 +10,10 @@ import {
 import { ZodError } from "zod";
 
 class EventController {
-  public async getAllEvents(_req: Request, res: Response, next: NextFunction) {
+  public async getAllEvents(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = await pool.manyOrNone(SQL_EVENT.GET_ALL_EVENTS);
+      const userId = req.payload?.userId;
+      const data = await pool.manyOrNone(SQL_EVENT.GET_ALL_EVENTS, userId);
       res.status(200).send(data);
     } catch (error) {
       next(error);
