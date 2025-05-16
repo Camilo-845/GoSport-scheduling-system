@@ -1,0 +1,5 @@
+<div class="sports-grid">
+  @for (sport of sports(); track sport.id_deporte) {
+    <app-sport-details [sport]="sport" />
+  }
+</div>

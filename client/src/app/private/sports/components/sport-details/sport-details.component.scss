@@ -1,0 +1,55 @@
+.sport-item {
+  position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  transform: translateY(0);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Escalonado visual */
+.sports-grid > *:nth-child(2n) {
+  transform: translateY(2rem);
+}
+
+/* Animación al hacer hover */
+.sport-item:hover {
+  transform: translateY(-0.5rem) scale(1.02);
+  z-index: 1;
+}
+
+.sport-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+  transition: transform 0.4s ease;
+}
+
+/* Efecto leve sobre imagen en hover */
+.sport-item:hover .sport-image {
+  transform: scale(1.05);
+}
+
+.sport-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1rem;
+  backdrop-filter: blur(3px);
+  transition: background 0.3s ease;
+}
+
+/* Fondo más claro en hover */
+.sport-item:hover .sport-label {
+  background: rgba(0, 0, 0, 0.4);
+}

@@ -1,0 +1,12 @@
+@let sportList = sports();
+
+<section class="sports-section">
+  <header class="sports-header">
+    <h2>Nuestros deportes</h2>
+  </header>
+  @if (sportList == undefined || sportList?.length === 0) {
+    <p>No sports found</p>
+  } @else {
+    <app-sport-list [sports]="sportList" />
+  }
+</section>

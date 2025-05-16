@@ -41,6 +41,11 @@ export const router: Routes = [
         loadComponent: () =>
           import('./events/envents.component').then((m) => m.EnventsComponent),
       },
+      {
+        path: AppRoutes.private.sports,
+        loadComponent: () =>
+          import('./sports/sports.component').then((m) => m.SportsComponent),
+      },
     ],
   },
 ];
