@@ -15,3 +15,10 @@ export interface GetEventResponse {
   idCancha: number;
   esParticipante: boolean;
 }
+
+export interface createEventSchema {
+  nombre: string;
+  fecha: string;
+  horaInicio: string;
+  idCancha: string;
+}

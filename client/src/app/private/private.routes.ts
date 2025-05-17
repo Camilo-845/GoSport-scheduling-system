@@ -37,9 +37,9 @@ export const router: Routes = [
           ).then((m) => m.ChangePasswordComponent),
       },
       {
-        path: AppRoutes.private.events,
-        loadComponent: () =>
-          import('./events/envents.component').then((m) => m.EnventsComponent),
+        path: AppRoutes.private.events.root,
+        loadChildren: () =>
+          import('./events/events.routes').then((m) => m.router),
       },
       {
         path: AppRoutes.private.sports,

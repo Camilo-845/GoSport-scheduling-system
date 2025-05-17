@@ -1,0 +1,45 @@
+<div class="create-event-card">
+  <form
+    class="form-container"
+    [formGroup]="createEventForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <h2 class="form-heading">Crear Evento</h2>
+
+    <app-custom-input
+      label="Nombre del Evento"
+      errorMessage="El nombre es requerido"
+      [control]="createEventForm.get('nombre')"
+      type="text"
+      placeHolder="Ej. Partido amistoso"
+    />
+
+    <app-custom-input
+      label="Fecha"
+      errorMessage="La fecha es requerida"
+      [control]="createEventForm.get('fecha')"
+      type="date"
+      placeHolder="Selecciona la fecha"
+    />
+
+    <app-custom-input
+      label="Hora de Inicio"
+      errorMessage="La hora es requerida"
+      [control]="createEventForm.get('horaInicio')"
+      type="time"
+      placeHolder="Selecciona la hora"
+    />
+
+    <app-custom-input
+      label="ID Cancha"
+      errorMessage="El ID de la cancha es requerido"
+      [control]="createEventForm.get('idCancha')"
+      type="number"
+      placeHolder="Ej. 1"
+    />
+
+    <button type="submit" [disabled]="createEventForm.invalid">
+      Crear Evento
+    </button>
+  </form>
+</div>

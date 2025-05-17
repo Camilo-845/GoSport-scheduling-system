@@ -31,7 +31,7 @@ export class EventPreviewListComponent {
 
   goMoreEvents() {
     this.router.navigate([
-      `${AppRoutes.private.root}/${AppRoutes.private.events}`,
+      `${AppRoutes.private.root}/${AppRoutes.private.events.root}`,
     ]);
   }
 }

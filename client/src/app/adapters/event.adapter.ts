@@ -1,4 +1,5 @@
 import {
+  createEventSchema,
   Event_model,
   GetEventResponse,
 } from '@/private/events/models/event.model';
@@ -13,4 +14,13 @@ export const getEventsResponse = (getEventsResponse: GetEventResponse) => {
     esParticipante: getEventsResponse.esParticipante,
   };
   return adaptedEvent;
+};
+
+export const createEventAdapter = (event: createEventSchema) => {
+  return {
+    nombre: event.nombre,
+    fecha: event.fecha,
+    hora_inicio: event.horaInicio,
+    id_cancha: Number(event.idCancha),
+  };
 };

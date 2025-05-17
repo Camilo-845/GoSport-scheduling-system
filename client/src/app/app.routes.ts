@@ -14,7 +14,10 @@ export const AppRoutes = {
     user: 'user',
     editUserInfo: 'editUserInfo',
     changePassword: 'changePassword',
-    events: 'events',
+    events: {
+      root: 'events',
+      create: 'create',
+    },
     sports: 'sports',
   },
 };

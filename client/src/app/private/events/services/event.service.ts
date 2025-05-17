@@ -1,9 +1,13 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Event_model, GetEventResponse } from '../models/event.model';
+import {
+  createEventSchema,
+  Event_model,
+  GetEventResponse,
+} from '../models/event.model';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
-import { getEventsResponse } from '@/adapters';
+import { createEventAdapter, getEventsResponse } from '@/adapters';
 @Injectable({
   providedIn: 'root',
 })
@@ -38,5 +42,9 @@ export class EventService {
   }
   joinToEvent(idEvento: number) {
     return this.http.post<void>(`${this.baseUrl}/${idEvento}/participant`, {});
+  }
+
+  createEvent(event: createEventSchema) {
+    return this.http.post<void>(this.baseUrl, createEventAdapter(event));
   }
 }
