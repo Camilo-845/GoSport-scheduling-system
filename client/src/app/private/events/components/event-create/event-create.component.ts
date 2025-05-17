@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { CustomInputComponent } from '@/components';
 import { AppRoutes } from '@/app.routes';
+import { BackButtonComponent } from '@/components/back-button/back-button.component';
 
 interface eventCreateForm {
   nombre: FormControl<string>;
@@ -20,7 +21,7 @@ interface eventCreateForm {
 @Component({
   selector: 'app-event-create',
   standalone: true,
-  imports: [ReactiveFormsModule, CustomInputComponent],
+  imports: [ReactiveFormsModule, CustomInputComponent, BackButtonComponent],
   templateUrl: './event-create.component.html',
   styleUrl: './event-create.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,6 +29,8 @@ interface eventCreateForm {
 export class EventCreateComponent {
   eventService = inject(EventService);
   router = inject(Router);
+
+  backRoute = [AppRoutes.private.root, AppRoutes.private.events.root];
 
   createEventForm = new FormGroup<eventCreateForm>({
     nombre: new FormControl('', {
