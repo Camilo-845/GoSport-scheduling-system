@@ -1,7 +1,16 @@
-@let eventList = events();
+<div class="event-list-container">
+  <div class="event-list-header">
+    <h2>Eventos</h2>
+    <button class="create-event-button" (click)="onCreateEvent()">
+      Crear Evento
+    </button>
+  </div>
 
-@if (eventList == undefined || eventList?.length === 0) {
-  <p>No events found</p>
-} @else {
-  <app-event-list [events]="eventList" />
-}
+  @let eventList = events();
+
+  @if (eventList == undefined || eventList?.length === 0) {
+    <p>No se encontraron eventos</p>
+  } @else {
+    <app-event-list [events]="eventList" />
+  }
+</div>
