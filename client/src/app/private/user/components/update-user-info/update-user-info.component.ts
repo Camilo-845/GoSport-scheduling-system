@@ -15,6 +15,7 @@ import { firstValueFrom } from 'rxjs';
 import { CustomInputComponent } from '@/components';
 import { Router } from '@angular/router';
 import { AppRoutes } from '@/app.routes';
+import { BackButtonComponent } from '@/components/back-button/back-button.component';
 
 interface updateUserForm {
   nombre: FormControl<string>;
@@ -25,7 +26,7 @@ interface updateUserForm {
 @Component({
   selector: 'app-update-user-info',
   standalone: true,
-  imports: [ReactiveFormsModule, CustomInputComponent],
+  imports: [ReactiveFormsModule, CustomInputComponent, BackButtonComponent],
   templateUrl: './update-user-info.component.html',
   styleUrl: './update-user-info.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,6 +35,8 @@ export class UpdateUserInfoComponent {
   userService = inject(UserService);
   userData = computed(() => this.userService.state().user);
   router = inject(Router);
+
+  backRoute = [AppRoutes.private.root, AppRoutes.private.user];
 
   updateForm = new FormGroup<updateUserForm>({
     nombre: new FormControl(this.userData()?.nombre ?? '', {

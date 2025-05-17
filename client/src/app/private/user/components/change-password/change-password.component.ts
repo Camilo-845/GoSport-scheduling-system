@@ -1,5 +1,6 @@
 import { AppRoutes } from '@/app.routes';
 import { CustomInputComponent } from '@/components';
+import { BackButtonComponent } from '@/components/back-button/back-button.component';
 import { AuthService } from '@/services';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
@@ -32,7 +33,7 @@ const passwordMatchValidator: ValidatorFn = (
 @Component({
   selector: 'app-change-password',
   standalone: true,
-  imports: [ReactiveFormsModule, CustomInputComponent],
+  imports: [ReactiveFormsModule, CustomInputComponent, BackButtonComponent],
   templateUrl: './change-password.component.html',
   styleUrl: './change-password.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,6 +41,8 @@ const passwordMatchValidator: ValidatorFn = (
 export class ChangePasswordComponent {
   authService = inject(AuthService);
   router = inject(Router);
+
+  backRoute = [AppRoutes.private.root, AppRoutes.private.user];
 
   changePasswordForm = new FormGroup<changePasswordForm>(
     {
