@@ -8,12 +8,13 @@ import { EventListComponent } from './components';
 import { EventService } from './services';
 import { Router } from '@angular/router';
 import { AppRoutes } from '@/app.routes';
+import { BackButtonComponent } from '@/components/back-button/back-button.component';
 
 @Component({
   selector: 'app-envents',
   standalone: true,
-  imports: [EventListComponent],
   templateUrl: './envents.component.html',
+  imports: [EventListComponent, BackButtonComponent],
   styleUrl: './envents.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -25,6 +26,7 @@ export class EnventsComponent {
   });
   router = inject(Router);
 
+  backRoute = [AppRoutes.private.root];
   constructor() {
     this.eventService.getEvents();
   }
