@@ -1,0 +1,19 @@
+meta {
+  name: GetEventById
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{URL}}/event/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}

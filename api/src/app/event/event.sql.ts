@@ -17,9 +17,21 @@ export const SQL_EVENT = {
   `,
 
   GET_EVENT_BY_ID: `
-    SELECT * 
-    FROM Evento
-    WHERE id_evento = $1;
+    SELECT 
+      E.id_evento,
+      E.nombre,
+      E.fecha,
+      E.hora_inicio,
+      E.id_cancha,
+      CASE 
+        WHEN P.id_usuario IS NOT NULL THEN true
+        ELSE false
+      END AS es_participante
+    FROM Evento E
+    LEFT JOIN Participante P 
+      ON E.id_evento = P.id_evento AND P.id_usuario = $1
+    WHERE E.fecha >= CURRENT_DATE
+    AND E.id_evento = $2
   `,
 
   CREATE_EVENT: `

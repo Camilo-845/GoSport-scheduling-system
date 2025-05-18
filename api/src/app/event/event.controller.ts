@@ -19,6 +19,19 @@ class EventController {
       next(error);
     }
   }
+  public async getEventById(req: Request, res: Response, next: NextFunction) {
+    try {
+      const userId = req.payload?.userId;
+      const { id } = req.params;
+      const data = await pool.oneOrNone(SQL_EVENT.GET_EVENT_BY_ID, [
+        userId,
+        id,
+      ]);
+      res.status(200).send(data);
+    } catch (error) {
+      next(error);
+    }
+  }
   public async getParticipantsByEventId(
     req: Request,
     res: Response,

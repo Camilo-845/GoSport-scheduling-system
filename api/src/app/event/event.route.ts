@@ -26,6 +26,7 @@ class Event_Route {
       eventController.joinParticipantToEventById,
     );
     this.apiRouteEvent.post("/", verifyToken, eventController.createEvent);
+    this.apiRouteEvent.get("/:id", verifyToken, eventController.getEventById);
   }
 }
 
