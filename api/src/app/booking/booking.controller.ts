@@ -26,6 +26,23 @@ class BookingController {
       next(error);
     }
   }
+
+  public async getBookingsByUserId(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) {
+    try {
+      const userId = req.payload?.userId;
+      const data = await pool.manyOrNone(
+        SQL_RESERVA.GET_RESERVATIONS_BY_USER_ID,
+        userId,
+      );
+      res.status(200).send(data);
+    } catch (error) {
+      next(error);
+    }
+  }
   public async createBooking(req: Request, res: Response, next: NextFunction) {
     try {
       const parsed = bookingCreateSchema.safeParse(req.body);

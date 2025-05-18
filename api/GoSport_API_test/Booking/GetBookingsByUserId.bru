@@ -1,0 +1,19 @@
+meta {
+  name: GetBookingsByUserId
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{URL}}/booking/court/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 1
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}

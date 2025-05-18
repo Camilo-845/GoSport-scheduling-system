@@ -24,6 +24,11 @@ class Booking_Route {
       verifyToken,
       bookingController.deleteBooking,
     );
+    this.apiRouteBooking.get(
+      "/user",
+      verifyToken,
+      bookingController.getBookingsByUserId,
+    );
   }
 }
 
