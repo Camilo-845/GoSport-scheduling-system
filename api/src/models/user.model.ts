@@ -48,7 +48,7 @@ export class User extends Auth {
   }
   toJSON() {
     return {
-      id_usuario: this.id_usuario,
+      idUsuario: this.id_usuario,
       nombre: this.nombre,
       email: this.email,
       apellido: this.apellido,
