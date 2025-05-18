@@ -29,9 +29,9 @@ export const SQL_RESERVA = {
            B.hora_inicio, 
            B.hora_fin, 
            B.id_usuario, 
-           U.nombre nombreUsuario,
-           U.apellido apellidoUsuario,
-           C.nombre nombreCancha,
+           U.nombre nombre_usuario,
+           U.apellido apellido_usuario,
+           C.nombre nombre_cancha,
            B.id_cancha
     FROM Reserva B
     INNER JOIN Cancha C
