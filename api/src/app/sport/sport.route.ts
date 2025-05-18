@@ -25,6 +25,13 @@ class Sport_Route {
 
     // Eliminar un deporte por su ID
     this.apiRouteSport.delete("/:id", verifyToken, sportController.deleteSport);
+
+    // Obtener canchas por ID de deporte
+    this.apiRouteSport.get(
+      "/:id/courts",
+      verifyToken,
+      sportController.getCourtsBySportId,
+    );
   }
 }
 

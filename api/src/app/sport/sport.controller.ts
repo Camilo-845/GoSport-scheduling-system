@@ -51,6 +51,23 @@ class SportController {
     }
   }
 
+  public async getCourtsBySportId(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) {
+    try {
+      const { id } = req.params;
+      const data = await pool.manyOrNone(SQL_SPORT.GET_COURTS_BY_SPORT_ID, id);
+      if (!data) {
+        res.status(404).send({ message: "Sport not found" });
+      }
+      res.status(200).send(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   // Actualizar un deporte existente
   public async updateSport(req: Request, res: Response, next: NextFunction) {
     try {

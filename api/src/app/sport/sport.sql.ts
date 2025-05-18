@@ -29,4 +29,9 @@ export const SQL_SPORT = {
     FROM Deporte
     WHERE id_deporte = $1;
 `,
+  GET_COURTS_BY_SPORT_ID: `
+  SELECT id_cancha, nombre, capacidad 
+  FROM Cancha
+  WHERE id_deporte = $1;
+    `,
 };
