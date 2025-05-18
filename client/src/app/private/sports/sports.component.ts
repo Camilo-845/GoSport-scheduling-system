@@ -31,10 +31,4 @@ export class SportsComponent {
   constructor() {
     this.sportService.getSports();
   }
-
-  goMoreSports() {
-    this.router.navigate([
-      `${AppRoutes.private.root}/${AppRoutes.private.sports}`,
-    ]);
-  }
 }
