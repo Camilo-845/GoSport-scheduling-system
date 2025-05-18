@@ -18,12 +18,7 @@
     } @else {
       <div class="court-list">
         @for (court of sportCourts(); track court.idCancha) {
-          <div class="court-card">
-            <div class="court-info">
-              <strong>{{ court.nombre }}</strong>
-              <p class="court-capacidad">Capacidad {{ court.capacidad }}</p>
-            </div>
-          </div>
+          <app-court-details [court]="court" />
         }
       </div>
     }

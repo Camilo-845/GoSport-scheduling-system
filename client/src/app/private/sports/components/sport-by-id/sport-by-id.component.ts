@@ -8,11 +8,12 @@ import { SportDetailsService } from '../../services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppRoutes } from '@/app.routes';
 import { BackButtonComponent } from '@/components/back-button/back-button.component';
+import { CourtDetailsComponent } from '@/private/courts/components/court-details/court-details.component';
 
 @Component({
   selector: 'app-sport-by-id',
   standalone: true,
-  imports: [BackButtonComponent],
+  imports: [BackButtonComponent, CourtDetailsComponent],
   templateUrl: './sport-by-id.component.html',
   styleUrl: './sport-by-id.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
