@@ -14,6 +14,6 @@ export class NotFoundComponent {
   router = inject(Router);
 
   goBack() {
-    this.router.navigate([AppRoutes.private.root], { replaceUrl: true });
+    this.router.navigate([AppRoutes.private.root]);
   }
 }
