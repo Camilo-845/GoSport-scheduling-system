@@ -1,0 +1,88 @@
+.not-found-container {
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color, #f9f9f9);
+  padding: 1rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.not-found-card {
+  max-width: 500px;
+  width: 100%;
+  padding: 2.5rem;
+  background-color: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: slideIn 0.6s ease-out;
+}
+
+.not-found-code {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.not-found-message {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.not-found-description {
+  font-size: 1rem;
+  color: var(--text-color-light, #666);
+  margin-bottom: 1.5rem;
+}
+
+/* Botón reutilizando estilos */
+.not-found-card button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 0.85rem 1.4rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 80%, black);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
