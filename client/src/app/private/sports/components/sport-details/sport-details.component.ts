@@ -1,5 +1,12 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+} from '@angular/core';
 import { Sport } from '../../models';
+import { Router } from '@angular/router';
+import { AppRoutes } from '@/app.routes';
 
 @Component({
   selector: 'app-sport-details',
@@ -11,4 +18,13 @@ import { Sport } from '../../models';
 })
 export class SportDetailsComponent {
   sport = input.required<Sport>();
+  router = inject(Router);
+
+  onGoToDetails(idSport: number) {
+    this.router.navigate([
+      AppRoutes.private.root,
+      AppRoutes.private.sports,
+      idSport,
+    ]);
+  }
 }

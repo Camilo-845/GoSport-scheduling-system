@@ -1,0 +1,31 @@
+<app-back-button [route]="backRoute" />
+
+<div class="sport-full-page">
+  @if (sportDetails()) {
+    @let sport = sportDetails();
+    <img
+      class="sport-image"
+      src="/assets/images/sports.webp"
+      alt="sports Image"
+    />
+    <span class="sport-label">{{ sport.nombre }}</span>
+  }
+
+  <section>
+    <h4>Canchas Doportivas</h4>
+    @if (sportCourts() && sportCourts().length === 0) {
+      <p class="placeholder-text">Aún no hay canchas registradas.</p>
+    } @else {
+      <div class="court-list">
+        @for (court of sportCourts(); track court.idCancha) {
+          <div class="court-card">
+            <div class="court-info">
+              <strong>{{ court.nombre }}</strong>
+              <p class="court-capacidad">Capacidad {{ court.capacidad }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </section>
+</div>

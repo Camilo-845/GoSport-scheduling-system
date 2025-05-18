@@ -1,15 +1,13 @@
 @let sportList = sports();
 
-<section class="sports-section">
-  <header class="sports-header">
-    <h2>Nuestros deportes</h2>
-    <button class="btn-view-all" (click)="goMoreSports()">
-      Ver todos <i class="fas fa-arrow-right"></i>
-    </button>
-  </header>
-  @if (sportList == undefined || sportList?.length === 0) {
-    <p>No sports found</p>
-  } @else {
-    <app-sport-list [sports]="sportList" />
-  }
-</section>
+<div class="sports-header">
+  <h2>Nuestros deportes</h2>
+  <button class="btn-view-all" (click)="goMoreSports()">
+    Ver todos <i class="fas fa-arrow-right"></i>
+  </button>
+</div>
+@if (sportList == undefined || sportList?.length === 0) {
+  <p>No sports found</p>
+} @else {
+  <app-sport-list [sports]="sportList" />
+}

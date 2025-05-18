@@ -43,8 +43,8 @@ export const router: Routes = [
       },
       {
         path: AppRoutes.private.sports,
-        loadComponent: () =>
-          import('./sports/sports.component').then((m) => m.SportsComponent),
+        loadChildren: () =>
+          import('./sports/sports.routes').then((m) => m.router),
       },
     ],
   },

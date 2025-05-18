@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { EnventsComponent } from './envents.component';
 import { AppRoutes } from '@/app.routes';
 
 export const router: Routes = [

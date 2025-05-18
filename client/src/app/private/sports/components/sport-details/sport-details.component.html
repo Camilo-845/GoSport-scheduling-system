@@ -1,6 +1,6 @@
 @let sportItem = sport();
 
-<article class="sport-item">
+<article class="sport-item" (click)="onGoToDetails(sportItem.id_deporte)">
   <img
     class="sport-image"
     src="/assets/images/sports.webp"
