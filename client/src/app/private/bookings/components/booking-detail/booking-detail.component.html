@@ -1,0 +1,18 @@
+@let bookingItem = booking();
+@let formatteDateValues = formattedDate();
+@let formattedInitTimeValues = formattedInitHour();
+@let formattedEndTimeValues = formattedEndHour();
+
+<div class="booking-item" (click)="onGoToDetails(bookingItem.idReserva)">
+  <div class="booking-date">
+    <span class="day">{{ formatteDateValues.split(" ")[0] }}</span>
+    <span class="month">{{ formatteDateValues.split(" ")[1] }}</span>
+  </div>
+  <div class="booking-info">
+    <h3>{{ bookingItem.nombreCancha }}</h3>
+    <p>
+      {{ formattedInitTimeValues }} - {{ formattedEndTimeValues }} •
+      {{ bookingItem.nombreUsuario }} {{ bookingItem.apellidoUsuario }}
+    </p>
+  </div>
+</div>

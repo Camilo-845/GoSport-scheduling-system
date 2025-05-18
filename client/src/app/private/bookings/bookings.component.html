@@ -1,0 +1,13 @@
+@let bookingList = bookings();
+
+<app-back-button [route]="backRoute" />
+<section class="event-list-container">
+  <header class="event-list-header">
+    <h2>Mis reservas</h2>
+  </header>
+  @if (bookingList == undefined || bookingList?.length === 0) {
+    <p>No bookings found</p>
+  } @else {
+    <app-booking-list [bookings]="bookingList" />
+  }
+</section>

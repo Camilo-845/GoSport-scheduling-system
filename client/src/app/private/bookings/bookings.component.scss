@@ -1,0 +1,18 @@
+.event-list-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.event-list-header {
+  display: flex;
+  margin: 1.5rem 1rem;
+
+  h2 {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    margin: 0;
+  }
+}

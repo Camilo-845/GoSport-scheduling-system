@@ -20,6 +20,10 @@ export const AppRoutes = {
     },
     sports: 'sports',
     courts: 'courts',
+    bookings: {
+      root: 'bookings',
+      create: 'create',
+    },
   },
 };
 export const routes: Routes = [

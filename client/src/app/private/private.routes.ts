@@ -51,6 +51,11 @@ export const router: Routes = [
         loadChildren: () =>
           import('./courts/courts.routes').then((m) => m.router),
       },
+      {
+        path: AppRoutes.private.bookings.root,
+        loadChildren: () =>
+          import('./bookings/bookings.routes').then((m) => m.router),
+      },
     ],
   },
 ];

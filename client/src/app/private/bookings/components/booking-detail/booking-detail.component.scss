@@ -1,0 +1,75 @@
+.booking-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f1f3f5;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateX(5px);
+  }
+}
+
+.booking-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+  padding: 0.5rem;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+
+  .day {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .month {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+}
+
+.booking-info {
+  flex: 1;
+
+  h3 {
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+  }
+
+  p {
+    color: #555;
+    font-size: 0.9rem;
+  }
+}
+
+.btn-cancel {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #c82333;
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 576px) {
+  .booking-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .booking-date {
+    min-width: 100px;
+  }
+}

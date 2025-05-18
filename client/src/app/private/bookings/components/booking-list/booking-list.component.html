@@ -1,0 +1,5 @@
+<div class="sports-grid">
+  @for (booking of bookings(); track booking.idReserva) {
+    <app-booking-detail [booking]="booking" />
+  }
+</div>
