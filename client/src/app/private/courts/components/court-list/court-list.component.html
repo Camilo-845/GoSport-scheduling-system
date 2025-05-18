@@ -1,0 +1,7 @@
+<div class="info-card">
+  <div class="tournament-list">
+    @for (court of courts(); track court.idCancha) {
+      <app-court-details [court]="court" />
+    }
+  </div>
+</div>

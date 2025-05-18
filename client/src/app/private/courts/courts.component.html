@@ -1,0 +1,13 @@
+@let sportList = courts();
+
+<app-back-button [route]="backRoute" />
+<section class="event-list-container">
+  <header class="event-list-header">
+    <h2>Nuestras canchas</h2>
+  </header>
+  @if (sportList == undefined || sportList?.length === 0) {
+    <p>No courts found</p>
+  } @else {
+    <app-court-list [courts]="sportList" />
+  }
+</section>

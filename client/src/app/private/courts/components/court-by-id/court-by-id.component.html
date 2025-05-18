@@ -1,0 +1,20 @@
+<app-back-button [route]="backRoute" />
+
+<div class="court-full-page">
+  @if (courtDetails()) {
+    @let court = courtDetails();
+    <app-court-details [court]="court" [fullPage]="true" />
+  }
+  <section class="court-extra">
+    <h4>Extra</h4>
+    <!-- @if (sportCourts() && sportCourts().length === 0) { -->
+    <!--   <p class="placeholder-text">Aún no hay canchas registradas.</p> -->
+    <!-- } @else { -->
+    <!--   <div class="court-list"> -->
+    <!--     @for (court of sportCourts(); track court.idCancha) { -->
+    <!--       <app-court-details [court]="court" /> -->
+    <!--     } -->
+    <!--   </div> -->
+    <!-- } -->
+  </section>
+</div>

@@ -19,6 +19,7 @@ export const AppRoutes = {
       create: 'create',
     },
     sports: 'sports',
+    courts: 'courts',
   },
 };
 export const routes: Routes = [

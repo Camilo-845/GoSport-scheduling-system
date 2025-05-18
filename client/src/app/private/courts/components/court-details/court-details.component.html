@@ -1,0 +1,11 @@
+@let courtItem = court();
+
+<div class="court-item" (click)="onGoToDetails(courtItem.idCancha)">
+  <div class="court-icon">
+    <i class="fa-solid fa-dumbbell"></i>
+  </div>
+  <div class="court-info">
+    <h3>{{ courtItem.nombre }}</h3>
+    <p>Capacidad: {{ courtItem.capacidad }} personas</p>
+  </div>
+</div>

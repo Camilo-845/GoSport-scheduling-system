@@ -1,0 +1,67 @@
+.court-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.court-item:hover {
+  transform: translateX(5px);
+  cursor: pointer;
+}
+
+.court-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  font-size: 1.5rem;
+}
+
+.court-info {
+  flex: 1;
+}
+
+.court-info h3 {
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+}
+
+.court-info p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.btn-book {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-book:hover {
+  background: #45a049;
+  transform: scale(1.05);
+}
+
+@media (max-width: 576px) {
+  .court-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .court-icon {
+    min-width: 80px;
+    height: 80px;
+  }
+}
