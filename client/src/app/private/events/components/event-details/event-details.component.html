@@ -2,7 +2,7 @@
 @let formatteDateValues = formattedDate();
 @let formattedTimeValues = formattedHour();
 
-<div class="tournament-item">
+<div class="tournament-item" (click)="openFullDetails(eventItem.id_evento)">
   <div class="tournament-date">
     <span class="day">{{ formatteDateValues.split(" ")[0] }}</span>
     <span class="month">{{ formatteDateValues.split(" ")[1] }}</span>

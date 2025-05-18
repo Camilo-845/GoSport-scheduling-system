@@ -1,0 +1,110 @@
+.tournament-full-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1rem;
+
+  .tournament-item {
+    margin-bottom: 0;
+  }
+
+  .tournament-extra {
+    background-color: #ffffff;
+    border: 1px dashed var(--primary-color);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .placeholder-text {
+    color: #888;
+    font-style: italic;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.participants-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.participants-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.participant-card {
+  background-color: #f0f2f5;
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.participant-card:hover {
+  transform: translateY(-2px);
+}
+
+.participant-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.participant-info strong {
+  color: #333;
+  font-size: 1rem;
+}
+
+.participant-phone {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+.tournament-cancel-button {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.75rem 1.5rem;
+  background-color: #ff4d4f;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 77, 79, 0.3);
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background-color: #d9363e;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    background-color: #b52a2f;
+    transform: translateY(0);
+  }
+
+  &:focus {
+    outline: 2px solid #ffd6d7;
+    outline-offset: 2px;
+  }
+}

@@ -8,12 +8,15 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
 import { createEventAdapter, getEventsResponse } from '@/adapters';
+import { User } from '@/private/user/models';
+
 @Injectable({
   providedIn: 'root',
 })
 export class EventService {
   state = signal({
     events: new Map<number, Event_model>(),
+    eventParticipats: new Map<number, User>(),
   });
   private readonly baseUrl = `${environment.apiUrl}/event`;
 

@@ -19,6 +19,13 @@ export const router: Routes = [
             (m) => m.EventCreateComponent,
           ),
       },
+      {
+        path: ':eventId',
+        loadComponent: () =>
+          import('./components/event-by-id/event-by-id.component').then(
+            (m) => m.EventByIdComponent,
+          ),
+      },
     ],
   },
 ];

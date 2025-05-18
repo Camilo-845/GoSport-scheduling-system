@@ -1,0 +1,34 @@
+<app-back-button [route]="backRoute" />
+<div class="tournament-full-page">
+  @if (eventDetails()) {
+    @let event = eventDetails();
+    <app-event-details [event]="event" [fullPage]="true" />
+  }
+  <section class="tournament-extra">
+    <h4 class="participants-title">Participantes del evento</h4>
+    @if (eventParticipants() && eventParticipants().length === 0) {
+      <p class="placeholder-text">Aún no hay participantes registrados.</p>
+    } @else {
+      <div class="participants-list">
+        @for (participant of eventParticipants(); track participant.idUsuario) {
+          <div class="participant-card">
+            <div class="participant-info">
+              <strong
+                >{{ participant.nombre }} {{ participant.apellido }}</strong
+              >
+              <p class="participant-phone">{{ participant.telefono }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </section>
+  @if (eventDetails().esParticipante) {
+    <button
+      class="tournament-cancel-button"
+      (click)="removeEventParticipant(eventDetails().id_evento)"
+    >
+      Cancelar Inscripción
+    </button>
+  }
+</div>
