@@ -1,0 +1,39 @@
+<div class="create-booking-card">
+  <app-back-button [route]="backRoute" />
+
+  <form
+    class="form-container"
+    [formGroup]="createBookingForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <h2 class="form-heading">Crear Reserva</h2>
+
+    <app-custom-input
+      label="Fecha"
+      errorMessage="La fecha es requerida"
+      [control]="createBookingForm.get('fecha')"
+      type="date"
+      placeHolder="Selecciona la fecha"
+    />
+
+    <app-custom-input
+      label="Hora de Inicio"
+      errorMessage="La hora de inicio es requerida"
+      [control]="createBookingForm.get('horaInicio')"
+      type="time"
+      placeHolder="Selecciona la hora de inicio"
+    />
+
+    <app-custom-input
+      label="Hora de Fin"
+      errorMessage="La hora de fin es requerida"
+      [control]="createBookingForm.get('horaFin')"
+      type="time"
+      placeHolder="Selecciona la hora de fin"
+    />
+
+    <button type="submit" [disabled]="createBookingForm.invalid">
+      Crear Reserva
+    </button>
+  </form>
+</div>

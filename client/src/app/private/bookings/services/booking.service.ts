@@ -1,8 +1,9 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Booking } from '../models';
+import { Booking, createBookingSchema } from '../models';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
+import { createBookingAdapter } from '@/adapters';
 
 @Injectable({
   providedIn: 'root',
@@ -63,5 +64,9 @@ export class BookingService {
           });
         }
       });
+  }
+
+  createBooking(booking: createBookingSchema) {
+    return this.http.post<void>(this.baseUrl, createBookingAdapter(booking));
   }
 }

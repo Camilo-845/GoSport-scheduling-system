@@ -34,4 +34,8 @@ export class BookingDetailsService {
         }
       });
   }
+
+  removeBooking(bookingId: number) {
+    return this.http.delete<void>(`${this.baseUrl}/${bookingId}`);
+  }
 }

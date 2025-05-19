@@ -1,0 +1,19 @@
+<app-back-button [route]="backRoute" />
+
+<div class="sport-full-page">
+  @if (bookingDetails()) {
+    <app-booking-detail [booking]="bookingDetails()" />
+  }
+
+  @if (courtDetails()) {
+    <app-court-details [court]="courtDetails()" />
+    @if (userId() && userId()?.idUsuario == bookingDetails().idUsuario) {
+      <button
+        (click)="removeBooking(bookingDetails().idReserva)"
+        class="remove-booking-button"
+      >
+        Cancelar Reserva
+      </button>
+    }
+  }
+</div>

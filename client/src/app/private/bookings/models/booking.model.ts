@@ -9,3 +9,11 @@ export interface Booking {
   nombreUsuario: string;
   apellidoUsuario: string;
 }
+
+export interface createBookingSchema {
+  fecha: string;
+  horaInicio: string;
+  horaFin: string;
+  idCancha: number;
+  idUsuario: number;
+}
