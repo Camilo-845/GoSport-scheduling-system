@@ -10,6 +10,15 @@ import {
 } from "../../adapters/booking.adapter";
 
 class BookingController {
+  public async getBookingById(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { id } = req.params;
+      const data = await pool.oneOrNone(SQL_RESERVA.GET_RESERVATION_BY_ID, id);
+      res.status(200).send(data);
+    } catch (error) {
+      next(error);
+    }
+  }
   public async getBookingsByCourtId(
     req: Request,
     res: Response,

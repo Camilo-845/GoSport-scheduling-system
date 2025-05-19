@@ -42,9 +42,22 @@ export const SQL_RESERVA = {
     AND fecha >= CURRENT_DATE;
   `,
   GET_RESERVATION_BY_ID: `
-    SELECT * 
-    FROM Reserva
-    WHERE id_reserva = $1;
+    SELECT B.id_reserva,
+           B.fecha, 
+           B.hora_inicio, 
+           B.hora_fin, 
+           B.id_usuario, 
+           U.nombre nombre_usuario,
+           U.apellido apellido_usuario,
+           C.nombre nombre_cancha,
+           B.id_cancha
+    FROM Reserva B
+    INNER JOIN Usuario U
+    ON U.id_usuario = B.id_usuario
+    INNER JOIN Cancha C
+    ON C.id_cancha = B.id_cancha
+    WHERE B.id_reserva = $1
+    AND fecha >= CURRENT_DATE;
   `,
 
   CREATE_RESERVATION: `

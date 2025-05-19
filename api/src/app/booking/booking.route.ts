@@ -10,6 +10,11 @@ class Booking_Route {
   }
   private myRoutes() {
     this.apiRouteBooking.get(
+      "/user",
+      verifyToken,
+      bookingController.getBookingsByUserId,
+    );
+    this.apiRouteBooking.get(
       "/court/:id",
       verifyToken,
       bookingController.getBookingsByCourtId,
@@ -25,9 +30,9 @@ class Booking_Route {
       bookingController.deleteBooking,
     );
     this.apiRouteBooking.get(
-      "/user",
+      "/:id",
       verifyToken,
-      bookingController.getBookingsByUserId,
+      bookingController.getBookingById,
     );
   }
 }

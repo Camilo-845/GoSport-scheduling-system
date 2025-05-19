@@ -1,0 +1,15 @@
+meta {
+  name: GetReservationById
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{URL}}/booking/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
