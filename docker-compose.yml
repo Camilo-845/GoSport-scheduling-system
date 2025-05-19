@@ -1,4 +1,37 @@
 services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./certs:/etc/nginx/certs:ro
+      - ./vhost.d:/etc/nginx/vhost.d
+      - ./html:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/conf.d/custom.conf:ro
+    networks:
+      - app_network
+    restart: always
+
+  letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name: nginx_letsencrypt
+    depends_on:
+      - nginx-proxy
+    environment:
+      NGINX_PROXY_CONTAINER: nginx_proxy
+      DEFAULT_EMAIL: tu_correo@ejemplo.com
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./certs:/etc/nginx/certs
+      - ./vhost.d:/etc/nginx/vhost.d
+      - ./html:/usr/share/nginx/html
+    networks:
+      - app_network
+    restart: always
+
   postgres:
     image: postgres:13-alpine
     container_name: gosport_db
@@ -6,8 +39,6 @@ services:
       POSTGRES_USER: gosport_user
       POSTGRES_PASSWORD: gosport_password
       POSTGRES_DB: gosport_db
-    ports:
-      - "5434:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./DataBase/init.sql:/docker-entrypoint-initdb.d/01-init.sql
@@ -19,6 +50,8 @@ services:
       retries: 5
     networks:
       - app_network
+    restart: unless-stopped
+
   api:
     build: ./api/
     container_name: gosport_api
@@ -29,24 +62,28 @@ services:
       DB_HOST: postgres
       DB_PASSWORD: gosport_password
       PORT: 8080
-    ports:
-      - "8081:8080"
+      VIRTUAL_HOST: api.tudominio.com
+      LETSENCRYPT_HOST: api.tudominio.com
     depends_on:
       postgres:
         condition: service_healthy
-    volumes:
-      - ./api:/usr/src/app
-      - /usr/src/app/build
-      - /usr/src/app/node_modules
     networks:
       - app_network
+    expose:
+      - "8080"
+    restart: unless-stopped
+
   client:
     build: ./client/
     container_name: gosport_client
-    ports:
-      - "8080:80"
+    environment:
+      VIRTUAL_HOST: tudominio.com
+      LETSENCRYPT_HOST: tudominio.com
     networks:
       - app_network
+    expose:
+      - "80"
+    restart: unless-stopped
 
 networks:
   app_network:
