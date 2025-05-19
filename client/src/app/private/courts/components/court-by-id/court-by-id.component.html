@@ -5,16 +5,19 @@
     @let court = courtDetails();
     <app-court-details [court]="court" [fullPage]="true" />
   }
+  <button (click)="onCreateBooking()" class="create-event-button">
+    Crear reservacion
+  </button>
   <section class="court-extra">
-    <h4>Extra</h4>
-    <!-- @if (sportCourts() && sportCourts().length === 0) { -->
-    <!--   <p class="placeholder-text">Aún no hay canchas registradas.</p> -->
-    <!-- } @else { -->
-    <!--   <div class="court-list"> -->
-    <!--     @for (court of sportCourts(); track court.idCancha) { -->
-    <!--       <app-court-details [court]="court" /> -->
-    <!--     } -->
-    <!--   </div> -->
-    <!-- } -->
+    <h4>Reservaciones</h4>
+    @if (bookings() && bookings().length === 0) {
+      <p class="placeholder-text">Aún no hay Reservas.</p>
+    } @else {
+      <div class="reservations-list">
+        @for (booking of bookings(); track booking.idReserva) {
+          <app-booking-detail [booking]="booking" />
+        }
+      </div>
+    }
   </section>
 </div>

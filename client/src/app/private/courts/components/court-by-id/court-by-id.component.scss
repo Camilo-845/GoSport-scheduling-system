@@ -17,6 +17,21 @@
     color: #888;
     font-style: italic;
   }
+  .create-event-button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--primary-color) 80%, black);
+    }
+  }
 }
 
 @keyframes fadeIn {
