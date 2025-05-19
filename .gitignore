@@ -133,3 +133,17 @@ dist
 .pnp.*
 
 certs/
+
+# Terraform state files
+terraform.tfstate
+terraform.tfstate.backup
+tfplan
+
+# Variables sensibles
+terraform.tfvars
+
+# Si usas directorio oculto de Terraform (a veces se genera)
+.terraform/
+.terraform.lock.hcl
+
+
