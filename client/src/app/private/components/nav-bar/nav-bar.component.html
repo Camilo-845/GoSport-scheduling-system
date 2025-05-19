@@ -11,16 +11,17 @@
   <div class="user-info" (click)="toggleMenu()">
     @if (user()) {
       <span class="username">{{ user()?.nombre }} {{ user()?.apellido }}</span>
-      <button class="avatar-container" aria-label="Opciones de usuario">
-        <i class="fas fa-user fa-lg icon"></i>
-      </button>
+    }
+    <button class="avatar-container" aria-label="Opciones de usuario">
+      <i class="fas fa-user fa-lg icon"></i>
+    </button>
 
-      @if (menuOpen()) {
-        <ul class="dropdown-menu">
-          <li><button (click)="goToProfile()">Perfil</button></li>
-          <li><button (click)="logout()">Cerrar sesión</button></li>
-        </ul>
-      }
+    @if (menuOpen()) {
+      <ul class="dropdown-menu">
+        <li><button (click)="goToProfile()">Perfil</button></li>
+        <li><button (click)="goToMyBookings()">Mis Reservaciones</button></li>
+        <li><button (click)="logout()">Cerrar sesión</button></li>
+      </ul>
     }
   </div>
 </header>

@@ -38,6 +38,11 @@ export class NavBarComponent {
       `${AppRoutes.private.root}/${AppRoutes.private.user}`,
     ]);
   }
+  goToMyBookings() {
+    this.router.navigate([
+      `${AppRoutes.private.root}/${AppRoutes.private.bookings.root}`,
+    ]);
+  }
 
   logout() {
     this.localManagerService.clearStorage();
