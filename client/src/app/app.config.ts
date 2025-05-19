@@ -13,6 +13,7 @@ import {
   withInterceptors,
 } from '@angular/common/http';
 import { authInterceptor } from './interceptors';
+import { appInitializerProviders } from './app.initializer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,5 +21,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withComponentInputBinding()),
     provideClientHydration(),
     provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
+    appInitializerProviders,
   ],
 };

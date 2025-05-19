@@ -5,11 +5,16 @@ import { catchError, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Event_model, GetEventResponse } from '../models/event.model';
 import { getEventsResponse } from '@/adapters';
+import { AppInitService } from '@/services';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventDetailsService {
+  configService = inject(AppInitService);
+  constructor() {
+    this.baseUrl = `${this.configService.get('apiUrl')}/event`;
+  }
   state = signal({
     eventDetails: {} as Event_model,
     eventParticipants: new Map<number, User>(),

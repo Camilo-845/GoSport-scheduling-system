@@ -4,11 +4,16 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
 import { createBookingAdapter } from '@/adapters';
+import { AppInitService } from '@/services';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookingService {
+  configService = inject(AppInitService);
+  constructor() {
+    this.baseUrl = `${this.configService.get('apiUrl')}/booking`;
+  }
   state = signal({
     bookings: new Map<number, Booking>(),
   });

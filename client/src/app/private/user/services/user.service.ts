@@ -4,11 +4,16 @@ import { environment } from 'src/environments/environment';
 import { UpdateUser, User } from '../models';
 import { catchError, of } from 'rxjs';
 import { updateUserRequestAdapter } from '@/adapters/user.adapter';
+import { AppInitService } from '@/services';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+  configService = inject(AppInitService);
+  constructor() {
+    this.baseUrl = `${this.configService.get('apiUrl')}/user`;
+  }
   state = signal<{ user: User | null }>({ user: null });
 
   private readonly baseUrl = `${environment.apiUrl}/user`;

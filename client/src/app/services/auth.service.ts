@@ -5,11 +5,13 @@ import { Injectable } from '@angular/core';
 import { inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AppInitService } from './app-init.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  configService = inject(AppInitService);
   private readonly baseUrl = `${environment.apiUrl}/auth`;
   http = inject(HttpClient);
 
@@ -27,5 +29,8 @@ export class AuthService {
   }
   changePassword(newPasswordData: NewPassword) {
     return this.http.put(`${this.baseUrl}/changePassword`, newPasswordData);
+  }
+  constructor() {
+    this.baseUrl = `${this.configService.get('apiUrl')}/auth`;
   }
 }

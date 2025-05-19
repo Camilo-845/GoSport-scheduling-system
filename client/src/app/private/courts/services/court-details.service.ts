@@ -2,11 +2,16 @@ import { inject, Injectable, signal } from '@angular/core';
 import { Court } from '../models/court.model';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { AppInitService } from '@/services';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CourtDetailsService {
+  configService = inject(AppInitService);
+  constructor() {
+    this.baseUrl = `${this.configService.get('apiUrl')}/court`;
+  }
   state = signal({
     courtDetails: {} as Court,
   });

@@ -9,11 +9,16 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
 import { createEventAdapter, getEventsResponse } from '@/adapters';
 import { User } from '@/private/user/models';
+import { AppInitService } from '@/services';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventService {
+  configService = inject(AppInitService);
+  constructor() {
+    this.baseUrl = `${this.configService.get('apiUrl')}/event`;
+  }
   state = signal({
     events: new Map<number, Event_model>(),
     eventParticipats: new Map<number, User>(),

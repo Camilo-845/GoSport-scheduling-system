@@ -3,11 +3,17 @@ import { Booking } from '../models';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
+import { AppInitService } from '@/services';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookingDetailsService {
+  configService = inject(AppInitService);
+  constructor() {
+    this.baseUrl = `${this.configService.get('apiUrl')}/booking`;
+  }
+
   state = signal({
     bookingDetails: {} as Booking,
   });

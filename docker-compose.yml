@@ -1,36 +1,37 @@
 services:
   postgres:
     image: postgres:13-alpine
-    container_name: gosport_db
+    container_name: ${DB_CONTAINER_NAME}
     environment:
-      POSTGRES_USER: gosport_user
-      POSTGRES_PASSWORD: gosport_password
-      POSTGRES_DB: gosport_db
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     ports:
-      - "5434:5432"
+      - ${DB_PORT_INTERNAL}
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./DataBase/init.sql:/docker-entrypoint-initdb.d/01-init.sql
       - ./DataBase/dml.sql:/docker-entrypoint-initdb.d/02-dml.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U gosport_user -d gosport_db"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
       interval: 5s
       timeout: 5s
       retries: 5
     networks:
       - app_network
+
   api:
     build: ./api/
-    container_name: gosport_api
+    container_name: ${API_CONTAINER_NAME}
     environment:
-      DB_NAME: gosport_db
-      DB_USER: gosport_user
-      DB_PORT: 5432
-      DB_HOST: postgres
-      DB_PASSWORD: gosport_password
-      PORT: 8080
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PORT: ${DB_PORT_INTERNAL}
+      DB_HOST: ${DB_HOST}
+      DB_PASSWORD: ${DB_PASSWORD}
+      PORT: ${API_PORT_INTERNAL}
     ports:
-      - "8081:8080"
+      - "${API_PORT_EXTERNAL}:${API_PORT_INTERNAL}"
     depends_on:
       postgres:
         condition: service_healthy
@@ -40,11 +41,12 @@ services:
       - /usr/src/app/node_modules
     networks:
       - app_network
+
   client:
     build: ./client/
-    container_name: gosport_client
+    container_name: ${CLIENT_CONTAINER_NAME}
     ports:
-      - "8080:80"
+      - "${CLIENT_PORT_EXTERNAL}:80"
     networks:
       - app_network
 
