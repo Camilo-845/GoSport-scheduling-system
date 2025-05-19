@@ -1,4 +1,4 @@
-/* Header */
+/* Estilos generales */
 .header {
   display: flex;
   justify-content: space-between;
@@ -10,15 +10,39 @@
   width: 100%;
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
 }
 
-.nav-main ul {
+.logo img {
+  height: 40px;
+}
+
+/* Menú hamburguesa */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+/* Nav principal */
+.nav-main {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links {
   display: flex;
   gap: 2rem;
   list-style: none;
+  padding-left: 0;
+  margin: 0;
 }
 
-.nav-main a {
+.nav-links a {
   text-decoration: none;
   color: var(--text-color);
   font-size: 1.1rem;
@@ -29,7 +53,7 @@
   position: relative;
 }
 
-.nav-main a::after {
+.nav-links a::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -41,14 +65,15 @@
   transform: translateX(-50%);
 }
 
-.nav-main a:hover {
+.nav-links a:hover {
   color: var(--primary-color);
 }
 
-.nav-main a:hover::after {
+.nav-links a:hover::after {
   width: 80%;
 }
 
+/* Botones de auth */
 .auth-buttons {
   display: flex;
   gap: 1rem;
@@ -86,4 +111,39 @@
 .btn-login:hover {
   transform: scale(1.05);
   background-color: rgba(76, 175, 80, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-main {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+    gap: 1.5rem;
+  }
+
+  .nav-main.open {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-login,
+  .btn-register {
+    width: 100%;
+  }
 }

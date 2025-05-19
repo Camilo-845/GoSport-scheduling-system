@@ -23,6 +23,7 @@ export class NavBarComponent {
   localManagerService = inject(LocalManagerService);
   user = computed(() => this.userService.state().user);
   router = inject(Router);
+  isMenuOpen = false;
 
   menuOpen = signal(false);
 

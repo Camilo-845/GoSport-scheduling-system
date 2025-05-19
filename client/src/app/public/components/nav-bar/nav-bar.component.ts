@@ -18,4 +18,5 @@ export class NavBarComponent {
   navToRegister() {
     this.router.navigate([AppRoutes.public.register]);
   }
+  isMenuOpen = false;
 }
