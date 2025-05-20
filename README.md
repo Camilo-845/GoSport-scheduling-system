@@ -17,9 +17,10 @@
 
 Clona el repositorio del proyecto en tu máquina local:
 
-````bash
+```bash
 git clone https://github.com/Camilo-845/GoSport-scheduling-system.git
 cd GoSport-scheduling-system
+```
 
 ### 🔧 Preparar variables de entorno
 
@@ -33,7 +34,7 @@ Antes de levantar los contenedores, ejecuta el script para configurar las variab
 
 ```bash
 ./scripts/generate-config.sh
-````
+```
 
 ---
 
