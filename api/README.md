@@ -1,248 +1,245 @@
-# API Documentation for Gosport System
+# Documentación de la API GoSport
 
-This document provides the detailed API documentation for the Gosport system, which manages reservations for sports facilities, events, and users.
+## Cómo probar la API localmente
 
-## Base URL
+1. Instala las dependencias:
+   ```bash
+   pnpm install
+   ```
+2. Compila el proyecto en modo watch (en una terminal):
+   ```bash
+   pnpm run build --watch
+   ```
+3. En otra terminal, inicia el servidor de desarrollo:
+   ```bash
+   pnpm run dev
+   ```
 
-The base URL for all endpoints is:
+> **Nota:** Todos los endpoints documentados pueden probarse fácilmente usando [Bruno](https://www.usebruno.com/) y abriendo la colección `GoSport_API_test` incluida en este repositorio.
+
+Este documento muestra únicamente los endpoints de la API que están cubiertos por tests funcionales en la carpeta `GoSport_API_test`.
+
+## URL Base
 
 ```
-https://localhost:8081
+https://localhost:8080
 ```
 
-## Authentication
-
-### Register User
-
-- **POST** `/api/auth/register`
-- **Description**: Registers a new user in the system.
-- **Request Body**:
-
-  ```json
-  {
-    "nombre": "John",
-    "apellido": "Doe",
-    "email": "john.doe@example.com",
-    "telefono": 123456789,
-    "password": "securepassword"
-  }
-  ```
-
-### Login User
-
-- **POST** `/api/auth/login`
-- **Description**: Logs in a user and returns a JWT token for authentication.
-- **Request Body**:
-
-  ```json
-  {
-    "email": "john.doe@example.com",
-    "password": "securepassword"
-  }
-  ```
-
-### Change Password
-
-- **PUT** `/api/auth/changePassword`
-- **Description**: Changes the password for the currently authenticated user.
-- **Request Body**:
-
-  ```json
-  {
-    "oldPassword": "oldpassword",
-    "newPassword": "newpassword"
-  }
-  ```
-
-### Delete User
-
-- **DELETE** `/api/auth/`
-- **Description**: Deletes the current user's account.
-
 ---
 
-## User Endpoints
+## Autenticación
 
-### Get User Information
-
-- **GET** `/api/user`
-- **Description**: Retrieves the information of the currently authenticated user.
-
-### Update User Information
-
-- **PUT** `/api/user`
-- **Description**: Updates the current user's information.
-- **Request Body**:
-
-  ```json
-  {
-    "nombre": "John",
-    "apellido": "Doe",
-    "email": "new.email@example.com",
-    "telefono": 987654321
-  }
-  ```
-
----
-
-## Consultations
-
-### Get Available Sports
-
-- **GET** `/api/deportes`
-- **Description**: Retrieves the list of available sports.
-
-### Get Available Courts
-
-- **GET** `/api/canchas`
-- **Description**: Retrieves the list of available courts.
-
-### Get Events
-
-- **GET** `/api/eventos`
-- **Description**: Retrieves the list of scheduled events.
-
-### Get Participants of an Event
-
-- **GET** `/api/eventos/{id_evento}/participantes`
-- **Description**: Retrieves the list of participants for a specific event.
-
----
-
-## Reservations
-
-### Create Reservation
-
-- **POST** `/api/reservas`
-- **Description**: Creates a new reservation for a court.
-- **Request Body**:
-
-  ```json
-  {
-    "id_cancha": 1,
-    "fecha": "2025-05-01",
-    "hora_inicio": "10:00:00",
-    "hora_fin": "12:00:00"
-  }
-  ```
-
-### Check Court Availability
-
-- **GET** `/api/canchas/{id_cancha}/disponibilidad`
-- **Description**: Checks if a court is available for reservation at the specified date and time.
-
-### Cancel Reservation
-
-- **DELETE** `/api/reservas/{id_reserva}`
-- **Description**: Cancels an existing reservation.
-
----
-
-## Events
-
-### Join Event
-
-- **POST** `/api/eventos/{id_evento}/participantes`
-- **Description**: Allows a user to join a specific event as a participant.
-
-### Cancel Event Participation
-
-- **DELETE** `/api/eventos/{id_evento}/participantes`
-- **Description**: Cancels a user's participation in an event.
-
-### Create Event
-
-- **POST** `/api/eventos`
-- **Description**: Creates a new event.
-- **Request Body**:
-
-  ```json
-  {
-    "nombre": "Torneo de Fútbol",
-    "fecha": "2025-06-01",
-    "hora_inicio": "14:00:00",
-    "id_cancha": 1
-  }
-  ```
-
----
-
-## Sports Management (Admin Only)
-
-### Get Available Sports
-
-- **GET** `/api/deportes`
-- **Description**: Retrieves the list of sports available in the system.
-
-### Create Sport
-
-- **POST** `/api/deportes`
-- **Description**: Creates a new sport.
-- **Request Body**:
-
-  ```json
-  {
-    "nombre": "Fútbol"
-  }
-  ```
-
-### Edit Sport
-
-- **PUT** `/api/deportes/{id_deporte}`
-- **Description**: Edits an existing sport.
-- **Request Body**:
-
-  ```json
-  {
-    "nombre": "Fútbol Sala"
-  }
-  ```
-
-### Delete Sport
-
-- **DELETE** `/api/deportes/{id_deporte}`
-- **Description**: Deletes an existing sport.
-
----
-
-## Example Responses
-
-### Successful Registration
-
+### Registrar usuario
+- **POST** `/auth/register`
+- **Body:**
 ```json
 {
-  "message": "User registered successfully"
+  "nombre": "Juan",
+  "apellido": "Perez",
+  "email": "juan24@example.com",
+  "telefono": 3124321432,
+  "password": "hola123"
 }
 ```
 
-### Successful Login
-
+### Iniciar sesión
+- **POST** `/auth/login`
+- **Body:**
 ```json
 {
-  "token": "jwt_token_here"
+  "email": "pedro@gmail.com",
+  "password": "hola123"
 }
 ```
 
-### Successful Reservation
-
+### Cambiar contraseña
+- **PUT** `/auth/changePassword`
+- **Headers:** Authorization: Bearer {token}
+- **Body:**
 ```json
 {
-  "message": "Reservation created successfully"
+  "oldPassword": "hola1234",
+  "newPassword": "hola123"
 }
 ```
 
-### Successful Event Join
+### Eliminar usuario
+- **DELETE** `/auth`
+- **Headers:** Authorization: Bearer {token}
 
+---
+
+## Usuario
+
+### Obtener información del usuario
+- **GET** `/user`
+- **Headers:** Authorization: Bearer {token}
+
+### Actualizar información del usuario
+- **PUT** `/user`
+- **Headers:** Authorization: Bearer {token}
+- **Body:**
 ```json
 {
-  "message": "You have successfully joined the event"
+  "nombre": "Camilo",
+  "apellido": "Sarmiento",
+  "telefono": "312432434"
 }
 ```
 
-### Successful Event Cancellation
+---
 
+## Reservas
+
+### Crear reserva
+- **POST** `/booking`
+- **Headers:** Authorization: Bearer {token}
+- **Body:**
 ```json
 {
-  "message": "You have successfully canceled your participation"
+  "fecha": "2025-06-01",
+  "idReserva": 1,
+  "hora_inicio": "08:00:00",
+  "hora_fin": "09:00:00",
+  "id_usuario": 12,
+  "id_cancha": 1
 }
 ```
+
+### Eliminar reserva
+- **DELETE** `/booking/:id`
+- **Headers:** Authorization: Bearer {token}
+
+### Obtener reserva por ID
+- **GET** `/booking/:id`
+
+### Obtener reservas por usuario
+- **GET** `/booking/user`
+- **Headers:** Authorization: Bearer {token}
+
+### Obtener reservas por cancha
+- **GET** `/booking/court/:id`
+- **Headers:** Authorization: Bearer {token}
+
+---
+
+## Eventos
+
+### Listar eventos
+- **GET** `/event`
+- **Headers:** Authorization: Bearer {token}
+
+### Obtener evento por ID
+- **GET** `/event/:id`
+- **Headers:** Authorization: Bearer {token}
+
+### Crear evento
+- **POST** `/event`
+- **Headers:** Authorization: Bearer {token}
+- **Body:**
+```json
+{
+  "nombre": "Nuevo evento123",
+  "fecha": "2025-08-10",
+  "hora_inicio": "10:00",
+  "id_cancha": 9
+}
+```
+
+### Unirse a evento
+- **POST** `/event/:id/participant`
+- **Headers:** Authorization: Bearer {token}
+
+### Salir de evento
+- **DELETE** `/event/:id/participants`
+- **Headers:** Authorization: Bearer {token}
+
+### Listar participantes de un evento
+- **GET** `/event/:id/participants`
+- **Headers:** Authorization: Bearer {token}
+
+---
+
+## Deportes
+
+### Listar deportes
+- **GET** `/sport`
+- **Headers:** Authorization: Bearer {token}
+
+### Crear deporte
+- **POST** `/sport/`
+- **Headers:** Authorization: Bearer {token}
+- **Body:**
+```json
+{
+  "nombre": "futbol"
+}
+```
+
+### Obtener deporte por ID
+- **GET** `/sport/:id`
+- **Headers:** Authorization: Bearer {token}
+
+### Editar deporte
+- **PUT** `/sport/:id`
+- **Headers:** Authorization: Bearer {token}
+- **Body:**
+```json
+{
+  "nombre": "Fútbol Sala"
+}
+```
+
+### Eliminar deporte
+- **DELETE** `/sport/:id`
+- **Headers:** Authorization: Bearer {token}
+
+### Listar canchas por deporte
+- **GET** `/sport/:id/courts`
+- **Headers:** Authorization: Bearer {token}
+
+---
+
+## Canchas
+
+### Listar canchas
+- **GET** `/court`
+- **Headers:** Authorization: Bearer {token}
+
+### Crear cancha
+- **POST** `/court`
+- **Headers:** Authorization: Bearer {token}
+- **Body:**
+```json
+{
+  "nombre": "Cancha 5",
+  "capacidad": 3,
+  "id_deporte": 4
+}
+```
+
+### Obtener cancha por ID
+- **GET** `/court/:id`
+- **Headers:** Authorization: Bearer {token}
+
+### Editar cancha
+- **PUT** `/court/:id`
+- **Headers:** Authorization: Bearer {token}
+- **Body:**
+```json
+{
+  "nombre": "Cancha 55",
+  "capacidad": 2,
+  "id_deporte": 4
+}
+```
+
+### Eliminar cancha
+- **DELETE** `/court/:id`
+- **Headers:** Authorization: Bearer {token}
+
+---
+
+## Notas
+- Todos los endpoints requieren autenticación Bearer salvo los de registro e inicio de sesión.
+- Los endpoints y ejemplos aquí listados están garantizados como funcionales según los tests automáticos existentes.
