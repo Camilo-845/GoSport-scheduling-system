@@ -3,7 +3,7 @@
 > 📅 Aplicación web de agendamientos de espacios deportivos construida  
 > con Angular, Node.js, PostgreSQL y Docker
 
-<video src="https://github.com/Camilo-845/GoSport-scheduling-system/blob/main/resources/video_example.mp4" controls width="600"></video>
+https://github.com/user-attachments/assets/781afa90-06fd-4595-9535-fa0445cf649c
 
 ## ⚙️ Inicializar
 
